@@ -1,0 +1,23 @@
+{
+  "name": "Generator Daftar Pustaka",
+  "short_name": "BiblioGen",
+  "description": "Generator daftar pustaka dengan 20+ format citation styles",
+  "start_url": "/bibliography-generator/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2c3e50",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/username/bibliography-generator/main/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/username/bibliography-generator/main/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["education", "productivity"],
+  "lang": "id-ID"
+}
