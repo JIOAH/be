@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📚 Generator Daftar Pustaka - Standar Jurnal Internasional</title>
+    <title>📚 Generator Daftar Pustaka - Tanpa Tag HTML</title>
     <style>
         * {
             margin: 0;
@@ -145,7 +145,7 @@
             min-height: 350px;
             max-height: 500px;
             overflow-y: auto;
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'Courier New', monospace;
             line-height: 1.8;
             white-space: pre-wrap;
             margin-top: 15px;
@@ -296,17 +296,13 @@
             color: #6c757d;
         }
         
-        .journal-standard {
+        .plain-text-note {
             background: #e8f4fc;
             padding: 15px;
             border-radius: 8px;
             margin-top: 20px;
             border-left: 4px solid #4a6491;
-        }
-        
-        .journal-standard h4 {
-            color: #2c3e50;
-            margin-bottom: 10px;
+            font-size: 0.9rem;
         }
         
         .toast {
@@ -332,7 +328,7 @@
     <div class="container">
         <header>
             <h1>📚 Generator Daftar Pustaka</h1>
-            <p class="subtitle">Standar Jurnal Internasional - Tanpa Tag HTML</p>
+            <p class="subtitle">Output Plain Text Tanpa Tag HTML - Cocok untuk Jurnal Internasional</p>
         </header>
         
         <div class="main-content">
@@ -460,97 +456,93 @@
                     </button>
                 </div>
                 
-                <div class="journal-standard">
-                    <h4>📊 Standar Jurnal Internasional</h4>
-                    <ul style="font-size: 0.9rem; padding-left: 20px;">
-                        <li><strong>DOI</strong> wajib untuk artikel jurnal</li>
-                        <li><strong>Volume & Issue</strong> harus lengkap</li>
-                        <li><strong>Halaman spesifik</strong> untuk artikel</li>
-                        <li><strong>Nama jurnal lengkap</strong>, tidak disingkat</li>
+                <div class="plain-text-note">
+                    <strong>📝 Catatan:</strong>
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li><strong>TIDAK ADA TAG HTML</strong> dalam output</li>
+                        <li>Output berupa <strong>plain text murni</strong></li>
+                        <li>Cocok untuk submission ke jurnal internasional</li>
+                        <li>Format sesuai standar masing-masing publisher</li>
                     </ul>
                 </div>
             </div>
             
             <!-- OUTPUT SECTION -->
             <div class="output-section">
-                <h2 style="color: #2c3e50; margin-bottom: 20px;">📋 Format Jurnal Internasional</h2>
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">📋 Format Output Plain Text</h2>
                 
                 <div class="tabs">
-                    <button class="tab active" onclick="showTab('sciences')">Sciences</button>
-                    <button class="tab" onclick="showTab('medical')">Medical</button>
+                    <button class="tab active" onclick="showTab('science')">Science Journals</button>
+                    <button class="tab" onclick="showTab('medical')">Medical Journals</button>
                     <button class="tab" onclick="showTab('social')">Social Sciences</button>
                 </div>
                 
-                <!-- Sciences Formats -->
-                <div id="sciences" class="tab-content active">
+                <!-- Science Journals -->
+                <div id="science" class="tab-content active">
                     <div class="format-grid">
                         <div class="format-card" onclick="selectFormat('nature')">
                             <div class="format-name">Nature</div>
-                            <div class="format-desc">Nature Publishing Group</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                         <div class="format-card" onclick="selectFormat('science')">
                             <div class="format-name">Science</div>
-                            <div class="format-desc">AAAS Science Journal</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                         <div class="format-card" onclick="selectFormat('cell')">
                             <div class="format-name">Cell</div>
-                            <div class="format-desc">Cell Press</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                         <div class="format-card" onclick="selectFormat('ieee')">
                             <div class="format-name">IEEE</div>
-                            <div class="format-desc">Engineering & CS</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                         <div class="format-card" onclick="selectFormat('acs')">
                             <div class="format-name">ACS</div>
-                            <div class="format-desc">American Chemical Society</div>
-                        </div>
-                        <div class="format-card" onclick="selectFormat('aps')">
-                            <div class="format-name">APS</div>
-                            <div class="format-desc">American Physical Society</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Medical Formats -->
+                <!-- Medical Journals -->
                 <div id="medical" class="tab-content">
                     <div class="format-grid">
                         <div class="format-card" onclick="selectFormat('nejm')">
                             <div class="format-name">NEJM</div>
-                            <div class="format-desc">New England Journal</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                         <div class="format-card" onclick="selectFormat('lancet')">
                             <div class="format-name">The Lancet</div>
-                            <div class="format-desc">Lancet Publishing</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                         <div class="format-card" onclick="selectFormat('jama')">
                             <div class="format-name">JAMA</div>
-                            <div class="format-desc">Journal of AMA</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                         <div class="format-card" onclick="selectFormat('bmj')">
                             <div class="format-name">BMJ</div>
-                            <div class="format-desc">British Medical Journal</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Social Sciences Formats -->
+                <!-- Social Sciences -->
                 <div id="social" class="tab-content">
                     <div class="format-grid">
                         <div class="format-card" onclick="selectFormat('apa')">
                             <div class="format-name">APA 7th</div>
-                            <div class="format-desc">American Psychological</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                         <div class="format-card" onclick="selectFormat('mla')">
                             <div class="format-name">MLA 9th</div>
-                            <div class="format-desc">Modern Language Assoc</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                         <div class="format-card" onclick="selectFormat('chicago')">
                             <div class="format-name">Chicago</div>
-                            <div class="format-desc">Chicago Manual</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                         <div class="format-card" onclick="selectFormat('harvard')">
                             <div class="format-name">Harvard</div>
-                            <div class="format-desc">Harvard University</div>
+                            <div class="format-desc">Plain text tanpa italic</div>
                         </div>
                     </div>
                 </div>
@@ -559,18 +551,19 @@
                 <div style="margin-top: 20px; padding: 15px; background: #fff8e1; border-radius: 8px;">
                     <strong>Format Terpilih:</strong>
                     <div id="formatInfo" style="margin-top: 10px;">
-                        <span id="selectedFormat" style="font-weight: bold; color: #2c3e50;">Nature Style</span>
+                        <span id="selectedFormat" style="font-weight: bold; color: #2c3e50;">Nature Style (Plain Text)</span>
                         <div id="formatDescription" style="font-size: 0.9rem; color: #666; margin-top: 5px;">
-                            Untuk publikasi di jurnal Nature dan grupnya
+                            Output berupa plain text tanpa tag HTML atau formatting
                         </div>
                     </div>
                 </div>
                 
                 <!-- Output Box -->
                 <div style="margin-top: 20px;">
-                    <label>Hasil Daftar Pustaka (Plain Text):</label>
+                    <label>Hasil Daftar Pustaka (Plain Text Murni):</label>
                     <div class="output-box" id="output">
-                        Tambahkan referensi dan pilih format jurnal internasional...
+                        Tambahkan referensi dan pilih format untuk melihat hasil...
+                        (Semua output berupa plain text tanpa tag HTML)
                     </div>
                 </div>
                 
@@ -597,16 +590,6 @@
                         <!-- Dynamic content -->
                     </div>
                 </div>
-                
-                <div class="journal-standard" style="margin-top: 20px;">
-                    <h4>⚠️ Catatan Penting:</h4>
-                    <ul style="font-size: 0.9rem; padding-left: 20px;">
-                        <li>Output berupa <strong>plain text murni</strong> (tanpa HTML tag)</li>
-                        <li>Cocok untuk submission ke jurnal internasional</li>
-                        <li>Format sesuai standar masing-masing publisher</li>
-                        <li>DOI dan halaman wajib untuk artikel jurnal</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
@@ -615,24 +598,6 @@
         // ===== STATE MANAGEMENT =====
         let references = JSON.parse(localStorage.getItem('bibliography_references')) || [];
         let selectedFormat = 'nature';
-        
-        // ===== FORMAT DESCRIPTIONS =====
-        const formatDescriptions = {
-            'nature': 'Nature Publishing Group - Untuk jurnal Nature, Nature Communications, dll.',
-            'science': 'American Association for the Advancement of Science - Untuk jurnal Science',
-            'cell': 'Cell Press - Untuk jurnal Cell, Neuron, Immunity, dll.',
-            'ieee': 'Institute of Electrical and Electronics Engineers - Untuk jurnal IEEE',
-            'acs': 'American Chemical Society - Untuk jurnal ACS Publications',
-            'aps': 'American Physical Society - Untuk jurnal Physical Review',
-            'nejm': 'New England Journal of Medicine - Standar NEJM',
-            'lancet': 'The Lancet - Standar Lancet Publishing Group',
-            'jama': 'Journal of the American Medical Association - Standar JAMA',
-            'bmj': 'British Medical Journal - Standar BMJ',
-            'apa': 'American Psychological Association 7th Edition',
-            'mla': 'Modern Language Association 9th Edition',
-            'chicago': 'Chicago Manual of Style 17th Edition',
-            'harvard': 'Harvard Referencing Style'
-        };
         
         // ===== INITIALIZATION =====
         document.addEventListener('DOMContentLoaded', function() {
@@ -681,10 +646,24 @@
             }
             
             // Update format info
+            const formatNames = {
+                'nature': 'Nature Style',
+                'science': 'Science Journal Style', 
+                'cell': 'Cell Press Style',
+                'ieee': 'IEEE Style',
+                'acs': 'ACS Style',
+                'nejm': 'NEJM Style',
+                'lancet': 'Lancet Style',
+                'jama': 'JAMA Style',
+                'bmj': 'BMJ Style',
+                'apa': 'APA 7th Edition',
+                'mla': 'MLA 9th Edition',
+                'chicago': 'Chicago Style',
+                'harvard': 'Harvard Style'
+            };
+            
             document.getElementById('selectedFormat').textContent = 
-                format.charAt(0).toUpperCase() + format.slice(1) + ' Style';
-            document.getElementById('formatDescription').textContent = 
-                formatDescriptions[format] || 'International journal standard';
+                (formatNames[format] || format) + ' (Plain Text)';
         }
         
         function toggleFields() {
@@ -828,7 +807,7 @@
                 saveToLocalStorage();
                 updateReferencesList();
                 updateStats();
-                document.getElementById('output').textContent = 'Add references and select journal format...';
+                document.getElementById('output').textContent = 'Add references and select format...\n(All output is plain text without HTML tags)';
                 showToast('🧹 All references cleared');
             }
         }
@@ -889,7 +868,7 @@
             document.getElementById('pageCount').textContent = totalPages;
         }
         
-        // ===== BIBLIOGRAPHY GENERATION =====
+        // ===== BIBLIOGRAPHY GENERATION (PLAIN TEXT) =====
         function generateBibliography() {
             if (references.length === 0) {
                 showToast('❌ Please add references first', 'error');
@@ -906,459 +885,312 @@
             // Generate bibliography based on selected format
             let bibliography = '';
             
-            switch(selectedFormat) {
-                case 'nature':
-                    bibliography = generateNatureFormat();
-                    break;
-                case 'science':
-                    bibliography = generateScienceFormat();
-                    break;
-                case 'cell':
-                    bibliography = generateCellFormat();
-                    break;
-                case 'ieee':
-                    bibliography = generateIEEEFormat();
-                    break;
-                case 'acs':
-                    bibliography = generateACSFormat();
-                    break;
-                case 'aps':
-                    bibliography = generateAPSFormat();
-                    break;
-                case 'nejm':
-                    bibliography = generateNEJMFormat();
-                    break;
-                case 'lancet':
-                    bibliography = generateLancetFormat();
-                    break;
-                case 'jama':
-                    bibliography = generateJAMAFormat();
-                    break;
-                case 'bmj':
-                    bibliography = generateBMJFormat();
-                    break;
-                case 'apa':
-                    bibliography = generateAPAFormat();
-                    break;
-                case 'mla':
-                    bibliography = generateMLAFormat();
-                    break;
-                case 'chicago':
-                    bibliography = generateChicagoFormat();
-                    break;
-                case 'harvard':
-                    bibliography = generateHarvardFormat();
-                    break;
-                default:
-                    bibliography = generateNatureFormat();
-            }
+            // Common header
+            bibliography += 'REFERENCES\n';
+            bibliography += 'Generated: ' + new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }) + '\n';
+            bibliography += 'Format: ' + selectedFormat.toUpperCase() + '\n';
+            bibliography += '='.repeat(60) + '\n\n';
+            
+            // Generate entries
+            references.forEach((ref, index) => {
+                let entry = '';
+                
+                switch(selectedFormat) {
+                    case 'nature':
+                        entry = generateNatureEntry(ref, index);
+                        break;
+                    case 'science':
+                        entry = generateScienceEntry(ref, index);
+                        break;
+                    case 'cell':
+                        entry = generateCellEntry(ref, index);
+                        break;
+                    case 'ieee':
+                        entry = generateIEEEEntry(ref, index);
+                        break;
+                    case 'acs':
+                        entry = generateACSEntry(ref, index);
+                        break;
+                    case 'nejm':
+                        entry = generateNEJMEntry(ref, index);
+                        break;
+                    case 'lancet':
+                        entry = generateLancetEntry(ref, index);
+                        break;
+                    case 'jama':
+                        entry = generateJAMAEntry(ref, index);
+                        break;
+                    case 'bmj':
+                        entry = generateBMJEntry(ref, index);
+                        break;
+                    case 'apa':
+                        entry = generateAPAEntry(ref, index);
+                        break;
+                    case 'mla':
+                        entry = generateMLAEntry(ref, index);
+                        break;
+                    case 'chicago':
+                        entry = generateChicagoEntry(ref, index);
+                        break;
+                    case 'harvard':
+                        entry = generateHarvardEntry(ref, index);
+                        break;
+                    default:
+                        entry = generateNatureEntry(ref, index);
+                }
+                
+                bibliography += entry + '\n';
+            });
             
             // Update output
             document.getElementById('output').textContent = bibliography;
-            showToast(`✅ ${selectedFormat.toUpperCase()} bibliography generated`);
+            showToast(`✅ ${selectedFormat.toUpperCase()} bibliography generated (Plain Text)`);
         }
         
-        // ===== INTERNATIONAL JOURNAL FORMATS =====
+        // ===== PLAIN TEXT ENTRY GENERATORS =====
         
-        // NATURE Format
-        function generateNatureFormat() {
-            let bib = 'REFERENCES\n\n';
+        // Nature Style - NO ITALICS
+        function generateNatureEntry(ref, index) {
+            let entry = `${index + 1}. `;
             
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.type === 'journal') {
-                    // Nature journal article format
-                    entry = `${ref.author}. ${ref.title}. ${ref.journalTitle} ${ref.volume}`;
-                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}`;
-                    entry += ` (${ref.year}).`;
-                    if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
-                    
-                } else if (ref.type === 'book') {
-                    // Book format for Nature
-                    entry = `${ref.author}. ${ref.title} (${ref.publisher}, ${ref.city}, ${ref.year}).`;
-                    
-                } else {
-                    entry = `${ref.author}. ${ref.title}. ${ref.publisher} (${ref.year}).`;
-                }
-                
-                bib += `${index + 1}. ${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // SCIENCE Format
-        function generateScienceFormat() {
-            let bib = 'REFERENCES AND NOTES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.type === 'journal') {
-                    // Science journal article format
-                    const authors = formatAuthorsScience(ref.author);
-                    entry = `${authors}, "${ref.title}," ${ref.journalTitle} ${ref.volume}`;
-                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage} (${ref.year}).`;
-                    if (ref.doi) entry += ` DOI: ${ref.doi}`;
-                    
-                } else {
-                    entry = `${ref.author}, "${ref.title}" (${ref.publisher}, ${ref.year}).`;
-                }
-                
-                bib += `${index + 1}. ${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // CELL Press Format
-        function generateCellFormat() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.type === 'journal') {
-                    // Cell journal article format
-                    entry = `${ref.author} (${ref.year}). ${ref.title}. ${ref.journalTitle} ${ref.volume}`;
-                    if (ref.issue) entry += `(${ref.issue})`;
-                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}.`;
-                    if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
-                    
-                } else {
-                    entry = `${ref.author} (${ref.year}). ${ref.title}. ${ref.publisher}, ${ref.city}.`;
-                }
-                
-                bib += `${index + 1}. ${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // IEEE Format
-        function generateIEEEFormat() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = `[${index + 1}] `;
-                
-                // Format author names for IEEE
-                const authors = formatAuthorsIEEE(ref.author);
-                entry += `${authors}, "${ref.title}"`;
-                
-                if (ref.type === 'journal') {
-                    entry += `, ${ref.journalTitle}, vol. ${ref.volume}, no. ${ref.issue}`;
-                    if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}`;
-                    entry += `, ${ref.year}.`;
-                    if (ref.doi) entry += ` DOI: ${ref.doi}`;
-                    
-                } else if (ref.type === 'conference') {
-                    entry += `, in Proc. ${ref.journalTitle}, ${ref.city}, ${ref.year}`;
-                    if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
-                    
-                } else {
-                    entry += `, ${ref.publisher}, ${ref.year}.`;
-                }
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // ACS Format
-        function generateACSFormat() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                // Format authors for ACS
-                const authors = formatAuthorsACS(ref.author);
-                
-                if (ref.type === 'journal') {
-                    // ACS journal article format
-                    entry = `${authors} ${ref.title}. ${ref.journalTitle} ${ref.year}, ${ref.volume}`;
-                    if (ref.issue) entry += ` (${ref.issue})`;
-                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}.`;
-                    if (ref.doi) entry += ` DOI: ${ref.doi}`;
-                    
-                } else if (ref.type === 'book') {
-                    // Book format for ACS
-                    entry = `${authors} ${ref.title}; ${ref.publisher}: ${ref.city}, ${ref.year};`;
-                    if (ref.totalPages) entry += ` ${ref.totalPages} pp.`;
-                    
-                } else {
-                    entry = `${authors} ${ref.title}. ${ref.publisher} ${ref.year}.`;
-                }
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // APS Format
-        function generateAPSFormat() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.type === 'journal') {
-                    // Physical Review format
-                    const authors = formatAuthorsAPS(ref.author);
-                    entry = `${authors}, ${ref.title}, ${ref.journalTitle} ${ref.volume}`;
-                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage} (${ref.year}).`;
-                    if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
-                    
-                } else {
-                    entry = `${ref.author}, ${ref.title} (${ref.publisher}, ${ref.year}).`;
-                }
-                
-                bib += `${index + 1}. ${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // NEJM Format
-        function generateNEJMFormat() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = `${index + 1}. `;
-                
-                if (ref.type === 'journal') {
-                    // NEJM medical article format
-                    entry = `${ref.author}. ${ref.title}. N Engl J Med ${ref.year};${ref.volume}`;
-                    if (ref.startPage && ref.endPage) entry += `:${ref.startPage}-${ref.endPage}.`;
-                    if (ref.doi) entry += ` doi:${ref.doi}`;
-                    
-                } else if (ref.type === 'book') {
-                    entry = `${ref.author}. ${ref.title}. ${ref.city}: ${ref.publisher}; ${ref.year}.`;
-                    
-                } else {
-                    entry = `${ref.author}. ${ref.title}. ${ref.publisher} ${ref.year}.`;
-                }
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // Lancet Format
-        function generateLancetFormat() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = `${index + 1}. `;
-                
-                if (ref.type === 'journal') {
-                    // Lancet medical article format
-                    entry = `${ref.author}. ${ref.title}. Lancet ${ref.year}; ${ref.volume}`;
-                    if (ref.issue) entry += ` (${ref.issue})`;
-                    if (ref.startPage && ref.endPage) entry += `: ${ref.startPage}-${ref.endPage}.`;
-                    
-                } else {
-                    entry = `${ref.author}. ${ref.title}. ${ref.publisher}: ${ref.city}; ${ref.year}.`;
-                }
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // JAMA Format
-        function generateJAMAFormat() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = `${index + 1}. `;
-                
-                if (ref.type === 'journal') {
-                    // JAMA medical article format
-                    entry = `${ref.author}. ${ref.title}. JAMA. ${ref.year};${ref.volume}`;
-                    if (ref.issue) entry += `(${ref.issue})`;
-                    if (ref.startPage && ref.endPage) entry += `:${ref.startPage}-${ref.endPage}.`;
-                    if (ref.doi) entry += ` doi:${ref.doi}`;
-                    
-                } else {
-                    entry = `${ref.author}. ${ref.title}. ${ref.city}, ${ref.country}: ${ref.publisher}; ${ref.year}.`;
-                }
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // BMJ Format
-        function generateBMJFormat() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = `${index + 1}. `;
-                
-                if (ref.type === 'journal') {
-                    // BMJ medical article format
-                    entry = `${ref.author}. ${ref.title}. BMJ ${ref.year};${ref.volume}`;
-                    if (ref.startPage && ref.endPage) entry += `:${ref.startPage}.`;
-                    if (ref.doi) entry += ` doi: ${ref.doi}`;
-                    
-                } else {
-                    entry = `${ref.author}. ${ref.title}. ${ref.publisher} ${ref.year}.`;
-                }
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // APA Format (for Social Sciences)
-        function generateAPAFormat() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.type === 'journal') {
-                    entry = `${ref.author} (${ref.year}). ${ref.title}. ${ref.journalTitle}, ${ref.volume}`;
-                    if (ref.issue) entry += `(${ref.issue})`;
-                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}.`;
-                    if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
-                    
-                } else if (ref.type === 'book') {
-                    entry = `${ref.author} (${ref.year}). ${ref.title}. ${ref.publisher}.`;
-                    
-                } else {
-                    entry = `${ref.author} (${ref.year}). ${ref.title}. Retrieved from ${ref.url}`;
-                }
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // MLA Format
-        function generateMLAFormat() {
-            let bib = 'Works Cited\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.type === 'journal') {
-                    entry = `${ref.author}. "${ref.title}." ${ref.journalTitle}, vol. ${ref.volume}, no. ${ref.issue}, ${ref.year}`;
-                    if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
-                    if (ref.doi) entry += ` doi:${ref.doi}`;
-                    
-                } else {
-                    entry = `${ref.author}. ${ref.title}. ${ref.publisher}, ${ref.year}.`;
-                }
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // Chicago Format
-        function generateChicagoFormat() {
-            let bib = 'Bibliography\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.type === 'journal') {
-                    entry = `${ref.author}. "${ref.title}." ${ref.journalTitle} ${ref.volume}`;
-                    if (ref.issue) entry += `, no. ${ref.issue}`;
-                    if (ref.startPage && ref.endPage) entry += ` (${ref.year}): ${ref.startPage}-${ref.endPage}.`;
-                    if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
-                    
-                } else {
-                    entry = `${ref.author}. ${ref.title}. ${ref.city}: ${ref.publisher}, ${ref.year}.`;
-                }
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // Harvard Format
-        function generateHarvardFormat() {
-            let bib = 'Reference List\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.type === 'journal') {
-                    entry = `${ref.author} (${ref.year}) '${ref.title}', ${ref.journalTitle}, ${ref.volume}`;
-                    if (ref.issue) entry += `(${ref.issue})`;
-                    if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
-                    if (ref.doi) entry += ` DOI: ${ref.doi}`;
-                    
-                } else {
-                    entry = `${ref.author} (${ref.year}) ${ref.title}, ${ref.publisher}: ${ref.city}.`;
-                }
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // ===== AUTHOR FORMATTING HELPERS =====
-        function formatAuthorsScience(authorString) {
-            const authors = authorString.split(/[,&]/).map(a => a.trim()).filter(a => a);
-            if (authors.length > 10) {
-                return authors.slice(0, 5).join(', ') + ' et al.';
+            if (ref.type === 'journal') {
+                entry += `${ref.author}. ${ref.title}. ${ref.journalTitle} ${ref.volume}`;
+                if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}`;
+                entry += ` (${ref.year}).`;
+                if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
+            } else if (ref.type === 'book') {
+                entry += `${ref.author}. ${ref.title}. ${ref.publisher}, ${ref.city} (${ref.year}).`;
+            } else if (ref.type === 'website') {
+                entry += `${ref.author}. ${ref.title}. Available at: ${ref.url}`;
+                if (ref.accessDate) entry += ` (accessed ${new Date(ref.accessDate).toLocaleDateString('en-GB')}).`;
             }
-            return authors.join(', ');
+            
+            return entry;
         }
         
-        function formatAuthorsIEEE(authorString) {
-            const authors = authorString.split(/[,&]/).map(a => a.trim()).filter(a => a);
-            const formatted = authors.map(author => {
-                if (author.includes(',')) {
-                    const parts = author.split(',');
+        // Science Style - NO ITALICS
+        function generateScienceEntry(ref, index) {
+            let entry = `${index + 1}. `;
+            
+            if (ref.type === 'journal') {
+                entry += `${ref.author}, ${ref.title}. ${ref.journalTitle} ${ref.volume}, ${ref.startPage} (${ref.year}).`;
+                if (ref.doi) entry += ` DOI: ${ref.doi}`;
+            } else if (ref.type === 'book') {
+                entry += `${ref.author}, ${ref.title} (${ref.publisher}, ${ref.city}, ${ref.year}).`;
+            }
+            
+            return entry;
+        }
+        
+        // Cell Press Style - NO ITALICS
+        function generateCellEntry(ref, index) {
+            let entry = `${index + 1}. `;
+            
+            if (ref.type === 'journal') {
+                entry += `${ref.author} (${ref.year}). ${ref.title}. ${ref.journalTitle} ${ref.volume}`;
+                if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}.`;
+                if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
+            } else {
+                entry += `${ref.author} (${ref.year}). ${ref.title}. ${ref.publisher}, ${ref.city}.`;
+            }
+            
+            return entry;
+        }
+        
+        // IEEE Style - NO ITALICS
+        function generateIEEEEntry(ref, index) {
+            let entry = `[${index + 1}] `;
+            
+            // Format author names
+            let authors = ref.author;
+            if (authors.includes(',')) {
+                const parts = authors.split(',');
+                if (parts.length > 0) {
                     const lastName = parts[0].trim();
                     const initials = parts[1] ? parts[1].replace(/[^A-Z]/g, '').split('').join('. ') + '.' : '';
-                    return `${initials} ${lastName}`;
+                    authors = `${initials} ${lastName}`;
                 }
-                return author;
-            });
-            return formatted.join(', ');
-        }
-        
-        function formatAuthorsACS(authorString) {
-            const authors = authorString.split(/[,&]/).map(a => a.trim()).filter(a => a);
-            const formatted = authors.map(author => {
-                if (author.includes(',')) {
-                    const parts = author.split(',');
-                    const lastName = parts[0].trim();
-                    const initials = parts[1] ? parts[1].replace(/[^A-Z]/g, '').split('').join('.') + '.' : '';
-                    return `${lastName}, ${initials}`;
-                }
-                return author;
-            });
-            return formatted.join('; ');
-        }
-        
-        function formatAuthorsAPS(authorString) {
-            const authors = authorString.split(/[,&]/).map(a => a.trim()).filter(a => a);
-            if (authors.length === 1) {
-                return authors[0];
-            } else if (authors.length === 2) {
-                return authors.join(' and ');
-            } else {
-                return authors.slice(0, -1).join(', ') + ', and ' + authors[authors.length - 1];
             }
+            
+            entry += `${authors}, "${ref.title}"`;
+            
+            if (ref.type === 'journal') {
+                entry += `, ${ref.journalTitle}, vol. ${ref.volume}, no. ${ref.issue}`;
+                if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}`;
+                entry += `, ${ref.year}.`;
+                if (ref.doi) entry += ` DOI: ${ref.doi}`;
+            } else if (ref.type === 'conference') {
+                entry += `, in Proc. ${ref.journalTitle}, ${ref.city}, ${ref.year}`;
+                if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
+            } else {
+                entry += `, ${ref.publisher}, ${ref.year}.`;
+            }
+            
+            return entry;
+        }
+        
+        // ACS Style - NO ITALICS
+        function generateACSEntry(ref, index) {
+            let entry = '';
+            
+            // Format authors for ACS
+            let authors = ref.author;
+            if (authors.includes(',')) {
+                const authorList = authors.split(/[,&]/).map(a => a.trim()).filter(a => a);
+                const formattedAuthors = authorList.map(author => {
+                    if (author.includes(',')) {
+                        const parts = author.split(',');
+                        const lastName = parts[0].trim();
+                        const initials = parts[1] ? parts[1].replace(/[^A-Z]/g, '').split('').join('.') + '.' : '';
+                        return `${lastName}, ${initials}`;
+                    }
+                    return author;
+                });
+                authors = formattedAuthors.join('; ');
+            }
+            
+            if (ref.type === 'journal') {
+                entry = `${authors} ${ref.title}. ${ref.journalTitle} ${ref.year}, ${ref.volume}`;
+                if (ref.issue) entry += ` (${ref.issue})`;
+                if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}.`;
+                if (ref.doi) entry += ` DOI: ${ref.doi}`;
+            } else if (ref.type === 'book') {
+                entry = `${authors} ${ref.title}; ${ref.publisher}: ${ref.city}, ${ref.year};`;
+                if (ref.totalPages) entry += ` ${ref.totalPages} pp.`;
+            }
+            
+            return entry;
+        }
+        
+        // NEJM Style - NO ITALICS
+        function generateNEJMEntry(ref, index) {
+            let entry = `${index + 1}. `;
+            
+            if (ref.type === 'journal') {
+                entry += `${ref.author}. ${ref.title}. N Engl J Med ${ref.year};${ref.volume}`;
+                if (ref.startPage && ref.endPage) entry += `:${ref.startPage}-${ref.endPage}.`;
+                if (ref.doi) entry += ` doi:${ref.doi}`;
+            } else if (ref.type === 'book') {
+                entry += `${ref.author}. ${ref.title}. ${ref.city}: ${ref.publisher}; ${ref.year}.`;
+            }
+            
+            return entry;
+        }
+        
+        // Lancet Style - NO ITALICS
+        function generateLancetEntry(ref, index) {
+            let entry = `${index + 1}. `;
+            
+            if (ref.type === 'journal') {
+                entry += `${ref.author}. ${ref.title}. Lancet ${ref.year}; ${ref.volume}`;
+                if (ref.issue) entry += ` (${ref.issue})`;
+                if (ref.startPage && ref.endPage) entry += `: ${ref.startPage}-${ref.endPage}.`;
+            } else {
+                entry += `${ref.author}. ${ref.title}. ${ref.publisher}: ${ref.city}; ${ref.year}.`;
+            }
+            
+            return entry;
+        }
+        
+        // JAMA Style - NO ITALICS
+        function generateJAMAEntry(ref, index) {
+            let entry = `${index + 1}. `;
+            
+            if (ref.type === 'journal') {
+                entry += `${ref.author}. ${ref.title}. JAMA. ${ref.year};${ref.volume}`;
+                if (ref.issue) entry += `(${ref.issue})`;
+                if (ref.startPage && ref.endPage) entry += `:${ref.startPage}-${ref.endPage}.`;
+                if (ref.doi) entry += ` doi:${ref.doi}`;
+            } else {
+                entry += `${ref.author}. ${ref.title}. ${ref.city}, ${ref.country}: ${ref.publisher}; ${ref.year}.`;
+            }
+            
+            return entry;
+        }
+        
+        // BMJ Style - NO ITALICS
+        function generateBMJEntry(ref, index) {
+            let entry = `${index + 1}. `;
+            
+            if (ref.type === 'journal') {
+                entry += `${ref.author}. ${ref.title}. BMJ ${ref.year};${ref.volume}`;
+                if (ref.startPage) entry += `:${ref.startPage}.`;
+                if (ref.doi) entry += ` doi: ${ref.doi}`;
+            } else {
+                entry += `${ref.author}. ${ref.title}. ${ref.publisher} ${ref.year}.`;
+            }
+            
+            return entry;
+        }
+        
+        // APA Style - NO ITALICS
+        function generateAPAEntry(ref, index) {
+            let entry = '';
+            
+            if (ref.type === 'journal') {
+                entry = `${ref.author} (${ref.year}). ${ref.title}. ${ref.journalTitle}, ${ref.volume}`;
+                if (ref.issue) entry += `(${ref.issue})`;
+                if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}.`;
+                if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
+            } else if (ref.type === 'book') {
+                entry = `${ref.author} (${ref.year}). ${ref.title}. ${ref.publisher}.`;
+            } else if (ref.type === 'website') {
+                entry = `${ref.author} (${ref.year}). ${ref.title}. Retrieved from ${ref.url}`;
+                if (ref.accessDate) entry += ` on ${new Date(ref.accessDate).toLocaleDateString('en-US')}`;
+            }
+            
+            return entry;
+        }
+        
+        // MLA Style - NO ITALICS
+        function generateMLAEntry(ref, index) {
+            let entry = '';
+            
+            if (ref.type === 'journal') {
+                entry = `${ref.author}. "${ref.title}." ${ref.journalTitle}, vol. ${ref.volume}, no. ${ref.issue}, ${ref.year}`;
+                if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
+                if (ref.doi) entry += ` doi:${ref.doi}`;
+            } else {
+                entry = `${ref.author}. ${ref.title}. ${ref.publisher}, ${ref.year}.`;
+            }
+            
+            return entry;
+        }
+        
+        // Chicago Style - NO ITALICS
+        function generateChicagoEntry(ref, index) {
+            let entry = '';
+            
+            if (ref.type === 'journal') {
+                entry = `${ref.author}. "${ref.title}." ${ref.journalTitle} ${ref.volume}`;
+                if (ref.issue) entry += `, no. ${ref.issue}`;
+                if (ref.startPage && ref.endPage) entry += ` (${ref.year}): ${ref.startPage}-${ref.endPage}.`;
+                if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
+            } else {
+                entry = `${ref.author}. ${ref.title}. ${ref.city}: ${ref.publisher}, ${ref.year}.`;
+            }
+            
+            return entry;
+        }
+        
+        // Harvard Style - NO ITALICS
+        function generateHarvardEntry(ref, index) {
+            let entry = '';
+            
+            if (ref.type === 'journal') {
+                entry = `${ref.author} (${ref.year}) '${ref.title}', ${ref.journalTitle}, ${ref.volume}`;
+                if (ref.issue) entry += `(${ref.issue})`;
+                if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
+                if (ref.doi) entry += ` DOI: ${ref.doi}`;
+            } else {
+                entry = `${ref.author} (${ref.year}) ${ref.title}, ${ref.publisher}: ${ref.city}.`;
+            }
+            
+            return entry;
         }
         
         // ===== UTILITY FUNCTIONS =====
@@ -1372,7 +1204,7 @@
             
             try {
                 await navigator.clipboard.writeText(text);
-                showToast('✅ Copied to clipboard');
+                showToast('✅ Copied to clipboard (Plain Text)');
             } catch (err) {
                 console.error('Copy failed:', err);
                 showToast('❌ Copy failed', 'error');
@@ -1397,7 +1229,7 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
             
-            showToast('✅ File downloaded');
+            showToast('✅ Plain text file downloaded');
         }
         
         function showToast(message, type = 'info') {
