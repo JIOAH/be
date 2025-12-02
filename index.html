@@ -3,146 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📚 Generator Daftar Pustaka - GitHub Pages</title>
-    
-    <!-- PWA Configuration -->
-    <meta name="theme-color" content="#2c3e50">
-    <meta name="description" content="Generator daftar pustaka online dengan 20+ format citation styles">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
-    
+    <title>📚 Generator Daftar Pustaka - Standar Jurnal Internasional</title>
     <style>
-        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-        
-        :root {
-            --primary: #2c3e50;
-            --secondary: #4a6491;
-            --accent: #3498db;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --success: #28a745;
-            --warning: #ffc107;
-            --danger: #dc3545;
-            --border-radius: 12px;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
             padding: 20px;
-            color: var(--dark);
         }
         
-        /* ===== CONTAINER ===== */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            animation: fadeIn 0.5s ease;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* ===== HEADER ===== */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(to right, #2c3e50, #4a6491);
             color: white;
             padding: 30px;
             text-align: center;
-            position: relative;
-        }
-        
-        .github-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            color: white;
-            transition: var(--transition);
-        }
-        
-        .github-badge:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
         }
         
         h1 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
+            margin-bottom: 15px;
         }
         
         .subtitle {
             font-size: 1.1rem;
             opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
         }
         
-        /* ===== MAIN CONTENT ===== */
         .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            padding: 30px;
-        }
-        
-        @media (max-width: 992px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .section {
-            background: var(--light);
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-        
-        .section h2 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid var(--accent);
             display: flex;
-            align-items: center;
-            gap: 10px;
+            flex-wrap: wrap;
+            padding: 25px;
+            gap: 25px;
         }
         
-        /* ===== FORM STYLES ===== */
+        .input-section {
+            flex: 1;
+            min-width: 350px;
+            padding: 25px;
+            background-color: #f9fafc;
+            border-radius: 12px;
+        }
+        
+        .output-section {
+            flex: 1;
+            min-width: 350px;
+            padding: 25px;
+            background-color: #f9fafc;
+            border-radius: 12px;
+        }
+        
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: var(--primary);
+            color: #2c3e50;
             font-size: 0.95rem;
         }
         
@@ -152,132 +85,107 @@
             border: 2px solid #e1e5e9;
             border-radius: 8px;
             font-size: 1rem;
-            transition: var(--transition);
+            transition: all 0.3s;
             background: white;
-        }
-        
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
         }
         
         .form-row {
             display: flex;
             gap: 15px;
-            margin-bottom: 15px;
         }
         
         .form-row .form-group {
             flex: 1;
-            margin-bottom: 0;
         }
         
-        @media (max-width: 768px) {
-            .form-row {
-                flex-direction: column;
-                gap: 10px;
-            }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #4a6491;
+            box-shadow: 0 0 0 3px rgba(74, 100, 145, 0.15);
         }
         
-        /* ===== BUTTONS ===== */
         .btn {
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            padding: 14px 25px;
+            background: linear-gradient(135deg, #4a6491, #3a5479);
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-size: 1rem;
             font-weight: 600;
-            transition: var(--transition);
+            transition: all 0.3s;
+            margin: 5px;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            text-decoration: none;
         }
         
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(44, 62, 80, 0.2);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #4a6491, #3a5479);
-        }
-        
-        .btn-success {
-            background: linear-gradient(135deg, #28a745, #218838);
+            box-shadow: 0 8px 20px rgba(74, 100, 145, 0.25);
         }
         
         .btn-secondary {
             background: linear-gradient(135deg, #6c757d, #5a6268);
         }
         
+        .btn-success {
+            background: linear-gradient(135deg, #28a745, #218838);
+        }
+        
         .btn-danger {
             background: linear-gradient(135deg, #dc3545, #c82333);
         }
         
-        .btn-small {
-            padding: 6px 12px;
-            font-size: 0.85rem;
-        }
-        
-        .action-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        /* ===== OUTPUT AREA ===== */
         .output-box {
-            background: white;
+            background-color: white;
             border: 2px solid #e1e5e9;
-            border-radius: var(--border-radius);
-            padding: 20px;
-            min-height: 300px;
-            max-height: 400px;
+            border-radius: 12px;
+            padding: 25px;
+            min-height: 350px;
+            max-height: 500px;
             overflow-y: auto;
             font-family: 'Times New Roman', Times, serif;
-            line-height: 1.6;
+            line-height: 1.8;
             white-space: pre-wrap;
             margin-top: 15px;
             font-size: 0.95rem;
         }
         
-        /* ===== FORMAT SELECTION ===== */
         .format-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            margin-bottom: 25px;
         }
         
         .format-card {
             padding: 15px;
             background: white;
             border: 2px solid #e1e5e9;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s;
             text-align: center;
         }
         
         .format-card:hover {
-            border-color: var(--accent);
+            border-color: #4a6491;
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .format-card.selected {
-            background: var(--primary);
+            background: #4a6491;
             color: white;
-            border-color: var(--primary);
+            border-color: #4a6491;
+            box-shadow: 0 4px 12px rgba(74, 100, 145, 0.3);
         }
         
         .format-name {
             font-weight: 600;
             margin-bottom: 5px;
+            font-size: 0.95rem;
         }
         
         .format-desc {
@@ -285,10 +193,12 @@
             opacity: 0.8;
         }
         
-        /* ===== REFERENCES LIST ===== */
-        .references-list {
-            list-style: none;
-            margin-top: 20px;
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+            justify-content: center;
         }
         
         .reference-item {
@@ -296,11 +206,10 @@
             padding: 15px;
             margin-bottom: 10px;
             border-radius: 8px;
-            border-left: 4px solid var(--accent);
+            border-left: 4px solid #4a6491;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
         
-        /* ===== TABS ===== */
         .tabs {
             display: flex;
             gap: 10px;
@@ -317,12 +226,12 @@
             cursor: pointer;
             font-weight: 600;
             color: #495057;
-            transition: var(--transition);
+            transition: all 0.3s;
             white-space: nowrap;
         }
         
         .tab.active {
-            background: var(--primary);
+            background: #4a6491;
             color: white;
         }
         
@@ -334,130 +243,152 @@
             display: block;
         }
         
-        /* ===== FOOTER ===== */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: var(--light);
-            border-top: 1px solid #dee2e6;
-            color: #6c757d;
-            font-size: 0.9rem;
-        }
-        
-        /* ===== UTILITY CLASSES ===== */
-        .hidden {
-            display: none !important;
-        }
-        
-        .text-center {
-            text-align: center;
-        }
-        
-        .mt-3 {
-            margin-top: 15px;
-        }
-        
-        .mb-3 {
-            margin-bottom: 15px;
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
         }
         
         .field-info {
             font-size: 0.8rem;
-            color: #6c757d;
+            color: #666;
             margin-top: 5px;
+            font-style: italic;
         }
         
-        /* ===== LOADING SPINNER ===== */
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
+        .example-btn {
+            font-size: 0.8rem;
+            padding: 5px 12px;
+            background-color: #e9ecef;
+            color: #495057;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 10px;
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4a6491;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        
+        .journal-standard {
+            background: #e8f4fc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #4a6491;
+        }
+        
+        .journal-standard h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <a href="https://github.com/YOUR-USERNAME/bibliography-generator" 
-               class="github-badge" 
-               target="_blank" 
-               rel="noopener">
-                <svg height="20" viewBox="0 0 16 16" width="20" fill="white">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                </svg>
-                View on GitHub
-            </a>
-            
             <h1>📚 Generator Daftar Pustaka</h1>
-            <p class="subtitle">
-                Buat daftar pustaka profesional dengan 20+ format citation styles. 
-                Gratis, offline, dan open source. Hosted on GitHub Pages.
-            </p>
+            <p class="subtitle">Standar Jurnal Internasional - Tanpa Tag HTML</p>
         </header>
         
         <div class="main-content">
             <!-- INPUT SECTION -->
-            <div class="section">
-                <h2>📝 Input Data Referensi</h2>
+            <div class="input-section">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">📝 Input Data Referensi</h2>
                 
-                <!-- Quick Stats -->
-                <div class="form-row">
-                    <div class="text-center">
-                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary);" id="refCount">0</div>
-                        <div class="field-info">Referensi</div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="refCount">0</div>
+                        <div class="stat-label">Referensi</div>
                     </div>
-                    <div class="text-center">
-                        <div style="font-size: 2rem; font-weight: bold; color: var(--primary);" id="pageCount">0</div>
-                        <div class="field-info">Total Halaman</div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="pageCount">0</div>
+                        <div class="stat-label">Total Halaman</div>
                     </div>
                 </div>
                 
-                <!-- Reference Type -->
                 <div class="form-group">
                     <label for="refType">Jenis Referensi</label>
                     <select id="refType" onchange="toggleFields()">
-                        <option value="book">📚 Buku</option>
                         <option value="journal">📄 Jurnal Artikel</option>
-                        <option value="website">🌐 Situs Web</option>
-                        <option value="thesis">🎓 Tesis/Disertasi</option>
+                        <option value="book">📚 Buku</option>
                         <option value="conference">👥 Prosiding Konferensi</option>
-                        <option value="report">📋 Laporan Teknis</option>
+                        <option value="thesis">🎓 Tesis/Disertasi</option>
+                        <option value="website">🌐 Situs Web</option>
                     </select>
                 </div>
                 
-                <!-- Author & Year -->
+                <div class="form-group">
+                    <label for="author">Penulis <button type="button" class="example-btn" onclick="fillExample('author')">Contoh</button></label>
+                    <input type="text" id="author" placeholder="Contoh: Smith, J. A.">
+                    <div class="field-info">Format: Nama belakang, Inisial nama depan</div>
+                </div>
+                
                 <div class="form-row">
-                    <div class="form-group" style="flex: 2;">
-                        <label for="author">Penulis</label>
-                        <input type="text" id="author" placeholder="Contoh: Smith, John A.">
-                    </div>
-                    <div class="form-group" style="flex: 1;">
-                        <label for="year">Tahun</label>
+                    <div class="form-group">
+                        <label for="year">Tahun Publikasi</label>
                         <input type="number" id="year" placeholder="2024" min="1900" max="2100">
                     </div>
+                    <div class="form-group">
+                        <label for="edition">Edisi</label>
+                        <input type="text" id="edition" placeholder="Edisi ke-">
+                    </div>
                 </div>
                 
-                <!-- Title -->
                 <div class="form-group">
-                    <label for="title">Judul Lengkap</label>
-                    <input type="text" id="title" placeholder="Judul referensi...">
+                    <label for="title">Judul Artikel/Buku</label>
+                    <input type="text" id="title" placeholder="Judul lengkap...">
                 </div>
                 
-                <!-- Journal/Book Fields -->
-                <div id="journalFields" class="hidden">
+                <div id="journalFields" style="display: block;">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="journalTitle">Nama Jurnal</label>
-                            <input type="text" id="journalTitle">
+                            <input type="text" id="journalTitle" placeholder="Nama jurnal lengkap">
                         </div>
                         <div class="form-group">
                             <label for="volume">Volume</label>
@@ -466,7 +397,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="issue">Issue</label>
+                            <label for="issue">Issue/Nomor</label>
                             <input type="text" id="issue" placeholder="No.">
                         </div>
                         <div class="form-group">
@@ -476,16 +407,10 @@
                     </div>
                 </div>
                 
-                <div id="bookFields">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="publisher">Penerbit</label>
-                            <input type="text" id="publisher">
-                        </div>
-                        <div class="form-group">
-                            <label for="edition">Edisi</label>
-                            <input type="text" id="edition" placeholder="Edisi ke-">
-                        </div>
+                <div id="bookFields" style="display: none;">
+                    <div class="form-group">
+                        <label for="publisher">Penerbit</label>
+                        <input type="text" id="publisher">
                     </div>
                     <div class="form-row">
                         <div class="form-group">
@@ -499,9 +424,8 @@
                     </div>
                 </div>
                 
-                <!-- Page Information -->
                 <div class="form-group">
-                    <label>Informasi Halaman</label>
+                    <label for="pageInfo">Informasi Halaman</label>
                     <div class="form-row">
                         <div class="form-group">
                             <input type="number" id="totalPages" placeholder="Jml halaman total" min="1">
@@ -516,8 +440,7 @@
                     </div>
                 </div>
                 
-                <!-- Web Fields -->
-                <div id="webFields" class="hidden">
+                <div id="webFields" style="display: none;">
                     <div class="form-group">
                         <label for="url">URL</label>
                         <input type="url" id="url" placeholder="https://example.com">
@@ -528,9 +451,8 @@
                     </div>
                 </div>
                 
-                <!-- Action Buttons -->
                 <div class="action-buttons">
-                    <button class="btn btn-primary" onclick="addReference()">
+                    <button class="btn" onclick="addReference()">
                         + Tambahkan Referensi
                     </button>
                     <button class="btn btn-secondary" onclick="clearForm()">
@@ -538,69 +460,53 @@
                     </button>
                 </div>
                 
-                <!-- Tips -->
-                <div class="mt-3" style="background: #e8f4fc; padding: 15px; border-radius: 8px;">
-                    <strong>💡 Tips:</strong>
-                    <ul style="margin-top: 10px; padding-left: 20px; font-size: 0.9rem;">
-                        <li>Gunakan koma untuk multiple authors</li>
-                        <li>DOI lebih baik daripada URL untuk artikel</li>
-                        <li>Data tersimpan otomatis di browser</li>
+                <div class="journal-standard">
+                    <h4>📊 Standar Jurnal Internasional</h4>
+                    <ul style="font-size: 0.9rem; padding-left: 20px;">
+                        <li><strong>DOI</strong> wajib untuk artikel jurnal</li>
+                        <li><strong>Volume & Issue</strong> harus lengkap</li>
+                        <li><strong>Halaman spesifik</strong> untuk artikel</li>
+                        <li><strong>Nama jurnal lengkap</strong>, tidak disingkat</li>
                     </ul>
                 </div>
             </div>
             
             <!-- OUTPUT SECTION -->
-            <div class="section">
-                <h2>📋 Format & Output</h2>
+            <div class="output-section">
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">📋 Format Jurnal Internasional</h2>
                 
-                <!-- Format Tabs -->
                 <div class="tabs">
-                    <button class="tab active" onclick="showTab('academic')">Academic</button>
-                    <button class="tab" onclick="showTab('science')">Science</button>
+                    <button class="tab active" onclick="showTab('sciences')">Sciences</button>
                     <button class="tab" onclick="showTab('medical')">Medical</button>
-                    <button class="tab" onclick="showTab('indonesia')">Indonesia</button>
+                    <button class="tab" onclick="showTab('social')">Social Sciences</button>
                 </div>
                 
-                <!-- Academic Formats -->
-                <div id="academic" class="tab-content active">
+                <!-- Sciences Formats -->
+                <div id="sciences" class="tab-content active">
                     <div class="format-grid">
-                        <div class="format-card" onclick="selectFormat('apa')">
-                            <div class="format-name">APA 7th</div>
-                            <div class="format-desc">Psychology & Social Sciences</div>
+                        <div class="format-card" onclick="selectFormat('nature')">
+                            <div class="format-name">Nature</div>
+                            <div class="format-desc">Nature Publishing Group</div>
                         </div>
-                        <div class="format-card" onclick="selectFormat('mla')">
-                            <div class="format-name">MLA 9th</div>
-                            <div class="format-desc">Humanities & Literature</div>
+                        <div class="format-card" onclick="selectFormat('science')">
+                            <div class="format-name">Science</div>
+                            <div class="format-desc">AAAS Science Journal</div>
                         </div>
-                        <div class="format-card" onclick="selectFormat('chicago')">
-                            <div class="format-name">Chicago</div>
-                            <div class="format-desc">History & Publishing</div>
+                        <div class="format-card" onclick="selectFormat('cell')">
+                            <div class="format-name">Cell</div>
+                            <div class="format-desc">Cell Press</div>
                         </div>
-                        <div class="format-card" onclick="selectFormat('harvard')">
-                            <div class="format-name">Harvard</div>
-                            <div class="format-desc">General Academic</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Science Formats -->
-                <div id="science" class="tab-content">
-                    <div class="format-grid">
                         <div class="format-card" onclick="selectFormat('ieee')">
                             <div class="format-name">IEEE</div>
                             <div class="format-desc">Engineering & CS</div>
                         </div>
                         <div class="format-card" onclick="selectFormat('acs')">
                             <div class="format-name">ACS</div>
-                            <div class="format-desc">Chemistry</div>
+                            <div class="format-desc">American Chemical Society</div>
                         </div>
-                        <div class="format-card" onclick="selectFormat('aip')">
-                            <div class="format-name">AIP</div>
-                            <div class="format-desc">Physics</div>
-                        </div>
-                        <div class="format-card" onclick="selectFormat('nature')">
-                            <div class="format-name">Nature</div>
-                            <div class="format-desc">Science Journals</div>
+                        <div class="format-card" onclick="selectFormat('aps')">
+                            <div class="format-name">APS</div>
+                            <div class="format-desc">American Physical Society</div>
                         </div>
                     </div>
                 </div>
@@ -608,108 +514,125 @@
                 <!-- Medical Formats -->
                 <div id="medical" class="tab-content">
                     <div class="format-grid">
-                        <div class="format-card" onclick="selectFormat('vancouver')">
-                            <div class="format-name">Vancouver</div>
-                            <div class="format-desc">Medical Journals</div>
+                        <div class="format-card" onclick="selectFormat('nejm')">
+                            <div class="format-name">NEJM</div>
+                            <div class="format-desc">New England Journal</div>
                         </div>
-                        <div class="format-card" onclick="selectFormat('ama')">
-                            <div class="format-name">AMA</div>
-                            <div class="format-desc">American Medical</div>
+                        <div class="format-card" onclick="selectFormat('lancet')">
+                            <div class="format-name">The Lancet</div>
+                            <div class="format-desc">Lancet Publishing</div>
                         </div>
-                        <div class="format-card" onclick="selectFormat('nlm')">
-                            <div class="format-name">NLM</div>
-                            <div class="format-desc">Library of Medicine</div>
+                        <div class="format-card" onclick="selectFormat('jama')">
+                            <div class="format-name">JAMA</div>
+                            <div class="format-desc">Journal of AMA</div>
+                        </div>
+                        <div class="format-card" onclick="selectFormat('bmj')">
+                            <div class="format-name">BMJ</div>
+                            <div class="format-desc">British Medical Journal</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Indonesian Formats -->
-                <div id="indonesia" class="tab-content">
+                <!-- Social Sciences Formats -->
+                <div id="social" class="tab-content">
                     <div class="format-grid">
-                        <div class="format-card" onclick="selectFormat('pui')">
-                            <div class="format-name">PUI</div>
-                            <div class="format-desc">Ejaan Indonesia</div>
+                        <div class="format-card" onclick="selectFormat('apa')">
+                            <div class="format-name">APA 7th</div>
+                            <div class="format-desc">American Psychological</div>
                         </div>
-                        <div class="format-card" onclick="selectFormat('kemendikbud')">
-                            <div class="format-name">Kemendikbud</div>
-                            <div class="format-desc">Pendidikan Indonesia</div>
+                        <div class="format-card" onclick="selectFormat('mla')">
+                            <div class="format-name">MLA 9th</div>
+                            <div class="format-desc">Modern Language Assoc</div>
                         </div>
-                        <div class="format-card" onclick="selectFormat('ui')">
-                            <div class="format-name">UI Style</div>
-                            <div class="format-desc">Universitas Indonesia</div>
+                        <div class="format-card" onclick="selectFormat('chicago')">
+                            <div class="format-name">Chicago</div>
+                            <div class="format-desc">Chicago Manual</div>
                         </div>
-                        <div class="format-card" onclick="selectFormat('itb')">
-                            <div class="format-name">ITB Style</div>
-                            <div class="format-desc">IT Bandung</div>
+                        <div class="format-card" onclick="selectFormat('harvard')">
+                            <div class="format-name">Harvard</div>
+                            <div class="format-desc">Harvard University</div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Selected Format Preview -->
-                <div class="mt-3" style="background: #fff8e1; padding: 15px; border-radius: 8px;">
+                <!-- Selected Format Info -->
+                <div style="margin-top: 20px; padding: 15px; background: #fff8e1; border-radius: 8px;">
                     <strong>Format Terpilih:</strong>
-                    <div id="formatPreview" style="margin-top: 10px; font-family: 'Times New Roman';">
-                        <span id="selectedFormat">APA 7th</span>
+                    <div id="formatInfo" style="margin-top: 10px;">
+                        <span id="selectedFormat" style="font-weight: bold; color: #2c3e50;">Nature Style</span>
+                        <div id="formatDescription" style="font-size: 0.9rem; color: #666; margin-top: 5px;">
+                            Untuk publikasi di jurnal Nature dan grupnya
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Output Box -->
-                <div class="mt-3">
-                    <label>Hasil Daftar Pustaka:</label>
+                <div style="margin-top: 20px;">
+                    <label>Hasil Daftar Pustaka (Plain Text):</label>
                     <div class="output-box" id="output">
-                        Tambahkan referensi dan pilih format untuk melihat hasil...
+                        Tambahkan referensi dan pilih format jurnal internasional...
                     </div>
                 </div>
                 
                 <!-- Output Actions -->
                 <div class="action-buttons">
                     <button class="btn btn-success" onclick="generateBibliography()">
-                        🔧 Generate
+                        🔧 Generate Bibliography
                     </button>
                     <button class="btn" onclick="copyToClipboard()">
-                        📋 Salin
+                        📋 Copy to Clipboard
                     </button>
                     <button class="btn" onclick="downloadAsTxt()">
-                        📥 Download TXT
+                        📥 Download .txt
                     </button>
                     <button class="btn btn-danger" onclick="clearAll()">
-                        🗑️ Hapus Semua
+                        🗑️ Clear All
                     </button>
                 </div>
                 
                 <!-- References List -->
-                <div class="mt-3">
-                    <label>Daftar Referensi (<span id="refCount2">0</span>):</label>
+                <div style="margin-top: 20px;">
+                    <label>References List (<span id="refCount2">0</span>):</label>
                     <div id="referencesList" style="max-height: 200px; overflow-y: auto; margin-top: 10px;">
                         <!-- Dynamic content -->
                     </div>
                 </div>
+                
+                <div class="journal-standard" style="margin-top: 20px;">
+                    <h4>⚠️ Catatan Penting:</h4>
+                    <ul style="font-size: 0.9rem; padding-left: 20px;">
+                        <li>Output berupa <strong>plain text murni</strong> (tanpa HTML tag)</li>
+                        <li>Cocok untuk submission ke jurnal internasional</li>
+                        <li>Format sesuai standar masing-masing publisher</li>
+                        <li>DOI dan halaman wajib untuk artikel jurnal</li>
+                    </ul>
+                </div>
             </div>
         </div>
-        
-        <footer>
-            <p>© 2024 Generator Daftar Pustaka | 
-                <a href="https://github.com/YOUR-USERNAME/bibliography-generator" 
-                   style="color: var(--accent); text-decoration: none;">
-                    Open Source on GitHub
-                </a> | 
-                Hosted on GitHub Pages
-            </p>
-            <p style="font-size: 0.8rem; margin-top: 10px;">
-                Works offline • No data collected • Free forever
-            </p>
-        </footer>
     </div>
 
-    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // ===== CONFIGURATION =====
-        const GITHUB_REPO = 'https://github.com/YOUR-USERNAME/bibliography-generator';
-        const APP_VERSION = '1.0.0';
-        
         // ===== STATE MANAGEMENT =====
         let references = JSON.parse(localStorage.getItem('bibliography_references')) || [];
-        let selectedFormat = 'apa';
+        let selectedFormat = 'nature';
+        
+        // ===== FORMAT DESCRIPTIONS =====
+        const formatDescriptions = {
+            'nature': 'Nature Publishing Group - Untuk jurnal Nature, Nature Communications, dll.',
+            'science': 'American Association for the Advancement of Science - Untuk jurnal Science',
+            'cell': 'Cell Press - Untuk jurnal Cell, Neuron, Immunity, dll.',
+            'ieee': 'Institute of Electrical and Electronics Engineers - Untuk jurnal IEEE',
+            'acs': 'American Chemical Society - Untuk jurnal ACS Publications',
+            'aps': 'American Physical Society - Untuk jurnal Physical Review',
+            'nejm': 'New England Journal of Medicine - Standar NEJM',
+            'lancet': 'The Lancet - Standar Lancet Publishing Group',
+            'jama': 'Journal of the American Medical Association - Standar JAMA',
+            'bmj': 'British Medical Journal - Standar BMJ',
+            'apa': 'American Psychological Association 7th Edition',
+            'mla': 'Modern Language Association 9th Edition',
+            'chicago': 'Chicago Manual of Style 17th Edition',
+            'harvard': 'Harvard Referencing Style'
+        };
         
         // ===== INITIALIZATION =====
         document.addEventListener('DOMContentLoaded', function() {
@@ -721,8 +644,8 @@
                 addExampleReferences();
             }
             
-            // Update GitHub link
-            updateGitHubLinks();
+            // Initialize format
+            selectFormat('nature');
         });
         
         // ===== UI FUNCTIONS =====
@@ -742,44 +665,62 @@
         
         function selectFormat(format) {
             selectedFormat = format;
-            const formatNames = {
-                'apa': 'APA 7th Edition',
-                'mla': 'MLA 9th Edition', 
-                'chicago': 'Chicago 17th Edition',
-                'harvard': 'Harvard Style',
-                'ieee': 'IEEE Style',
-                'acs': 'ACS Style',
-                'aip': 'AIP Style',
-                'nature': 'Nature Style',
-                'vancouver': 'Vancouver Style',
-                'ama': 'AMA 11th Edition',
-                'nlm': 'NLM Style',
-                'pui': 'PUI (Ejaan Indonesia)',
-                'kemendikbud': 'Kemendikbud Style',
-                'ui': 'UI Style',
-                'itb': 'ITB Style'
-            };
             
-            document.getElementById('selectedFormat').textContent = formatNames[format] || format;
+            // Update UI
             document.querySelectorAll('.format-card').forEach(card => {
                 card.classList.remove('selected');
             });
-            event.target.closest('.format-card').classList.add('selected');
+            
+            // Find and select the clicked card
+            const cards = document.querySelectorAll('.format-card');
+            for (let card of cards) {
+                if (card.querySelector('.format-name').textContent.toLowerCase().includes(format)) {
+                    card.classList.add('selected');
+                    break;
+                }
+            }
+            
+            // Update format info
+            document.getElementById('selectedFormat').textContent = 
+                format.charAt(0).toUpperCase() + format.slice(1) + ' Style';
+            document.getElementById('formatDescription').textContent = 
+                formatDescriptions[format] || 'International journal standard';
         }
         
         function toggleFields() {
             const type = document.getElementById('refType').value;
             
             // Hide all
-            document.getElementById('journalFields').classList.add('hidden');
-            document.getElementById('webFields').classList.add('hidden');
+            document.getElementById('journalFields').style.display = 'none';
+            document.getElementById('bookFields').style.display = 'none';
+            document.getElementById('webFields').style.display = 'none';
             
             // Show relevant fields
             if (type === 'journal' || type === 'conference') {
-                document.getElementById('journalFields').classList.remove('hidden');
+                document.getElementById('journalFields').style.display = 'block';
+            }
+            if (type === 'book' || type === 'thesis') {
+                document.getElementById('bookFields').style.display = 'block';
             }
             if (type === 'website') {
-                document.getElementById('webFields').classList.remove('hidden');
+                document.getElementById('webFields').style.display = 'block';
+            }
+        }
+        
+        function fillExample(field) {
+            const examples = {
+                'author': [
+                    'Smith, J. A.',
+                    'Johnson, M. B., Williams, C. D., & Brown, K. L.',
+                    'Zhang, H., Wang, Y., Chen, L. et al.',
+                    'International Consortium for Brain Mapping'
+                ]
+            };
+            
+            if (examples[field]) {
+                const randomExample = examples[field][Math.floor(Math.random() * examples[field].length)];
+                document.getElementById(field).value = randomExample;
+                showToast('Example filled');
             }
         }
         
@@ -790,12 +731,12 @@
             const author = document.getElementById('author').value.trim();
             const year = document.getElementById('year').value.trim();
             const title = document.getElementById('title').value.trim();
+            const edition = document.getElementById('edition').value.trim();
             const journalTitle = document.getElementById('journalTitle').value.trim();
             const volume = document.getElementById('volume').value.trim();
             const issue = document.getElementById('issue').value.trim();
             const doi = document.getElementById('doi').value.trim();
             const publisher = document.getElementById('publisher').value.trim();
-            const edition = document.getElementById('edition').value.trim();
             const city = document.getElementById('city').value.trim();
             const country = document.getElementById('country').value.trim();
             const totalPages = document.getElementById('totalPages').value.trim();
@@ -806,7 +747,7 @@
             
             // Validation
             if (!author || !year || !title) {
-                showToast('❌ Harap isi Penulis, Tahun, dan Judul', 'error');
+                showToast('❌ Please fill Author, Year, and Title', 'error');
                 return;
             }
             
@@ -817,12 +758,12 @@
                 author,
                 year,
                 title,
+                edition,
                 journalTitle,
                 volume,
                 issue,
                 doi,
                 publisher,
-                edition,
                 city,
                 country,
                 totalPages,
@@ -844,18 +785,19 @@
             updateReferencesList();
             updateStats();
             
-            showToast('✅ Referensi berhasil ditambahkan', 'success');
+            showToast('✅ Reference added successfully');
         }
         
         function clearForm() {
             document.getElementById('author').value = '';
+            document.getElementById('year').value = '';
             document.getElementById('title').value = '';
+            document.getElementById('edition').value = '';
             document.getElementById('journalTitle').value = '';
             document.getElementById('volume').value = '';
             document.getElementById('issue').value = '';
             document.getElementById('doi').value = '';
             document.getElementById('publisher').value = '';
-            document.getElementById('edition').value = '';
             document.getElementById('city').value = '';
             document.getElementById('country').value = '';
             document.getElementById('totalPages').value = '';
@@ -866,28 +808,28 @@
         }
         
         function removeReference(id) {
-            if (confirm('Hapus referensi ini?')) {
+            if (confirm('Delete this reference?')) {
                 references = references.filter(ref => ref.id !== id);
                 saveToLocalStorage();
                 updateReferencesList();
                 updateStats();
-                showToast('🗑️ Referensi dihapus', 'info');
+                showToast('🗑️ Reference deleted');
             }
         }
         
         function clearAll() {
             if (references.length === 0) {
-                showToast('Tidak ada referensi untuk dihapus', 'info');
+                showToast('No references to delete');
                 return;
             }
             
-            if (confirm(`Hapus semua ${references.length} referensi?`)) {
+            if (confirm(`Delete all ${references.length} references?`)) {
                 references = [];
                 saveToLocalStorage();
                 updateReferencesList();
                 updateStats();
-                document.getElementById('output').textContent = 'Tambahkan referensi dan pilih format untuk melihat hasil...';
-                showToast('🧹 Semua referensi dihapus', 'success');
+                document.getElementById('output').textContent = 'Add references and select journal format...';
+                showToast('🧹 All references cleared');
             }
         }
         
@@ -898,24 +840,30 @@
         // ===== UI UPDATES =====
         function updateReferencesList() {
             const container = document.getElementById('referencesList');
+            const count = references.length;
+            document.getElementById('refCount2').textContent = count;
             
-            if (references.length === 0) {
-                container.innerHTML = '<div style="text-align: center; padding: 20px; color: #999;">Belum ada referensi...</div>';
+            if (count === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 20px; color: #999;">No references yet...</div>';
                 return;
             }
             
             let html = '<div style="display: flex; flex-direction: column; gap: 10px;">';
             
             references.forEach((ref, index) => {
+                const typeIcon = ref.type === 'journal' ? '📄' : 
+                                ref.type === 'book' ? '📚' : 
+                                ref.type === 'website' ? '🌐' : '📝';
+                
                 html += `
-                    <div style="background: white; padding: 10px; border-radius: 6px; border-left: 3px solid var(--accent);">
+                    <div class="reference-item">
                         <div style="display: flex; justify-content: space-between; align-items: start;">
                             <div style="flex: 1;">
-                                <strong style="font-size: 0.9rem;">${ref.author} (${ref.year})</strong><br>
+                                <strong style="font-size: 0.9rem;">${typeIcon} ${index + 1}. ${ref.author} (${ref.year})</strong><br>
                                 <span style="font-size: 0.85rem; color: #666;">${ref.title.substring(0, 60)}${ref.title.length > 60 ? '...' : ''}</span>
                             </div>
                             <button onclick="removeReference(${ref.id})" 
-                                    style="background: none; border: none; color: var(--danger); cursor: pointer; font-size: 1.2rem;">
+                                    style="background: none; border: none; color: #dc3545; cursor: pointer; font-size: 1.2rem;">
                                 ×
                             </button>
                         </div>
@@ -930,7 +878,6 @@
         function updateStats() {
             const count = references.length;
             document.getElementById('refCount').textContent = count;
-            document.getElementById('refCount2').textContent = count;
             
             // Calculate total pages
             let totalPages = 0;
@@ -942,25 +889,10 @@
             document.getElementById('pageCount').textContent = totalPages;
         }
         
-        function updateGitHubLinks() {
-            const currentRepo = window.location.hostname === 'github.io' ? 
-                window.location.origin + window.location.pathname.split('/').slice(0, 2).join('/') :
-                'https://github.com/YOUR-USERNAME/bibliography-generator';
-            
-            // Update all GitHub links
-            document.querySelectorAll('a[href*="YOUR-USERNAME"]').forEach(link => {
-                link.href = currentRepo;
-            });
-            
-            document.querySelectorAll('a[href*="yourusername"]').forEach(link => {
-                link.href = currentRepo;
-            });
-        }
-        
         // ===== BIBLIOGRAPHY GENERATION =====
         function generateBibliography() {
             if (references.length === 0) {
-                showToast('❌ Tambahkan referensi terlebih dahulu', 'error');
+                showToast('❌ Please add references first', 'error');
                 return;
             }
             
@@ -971,188 +903,462 @@
                 return authorA.localeCompare(authorB);
             });
             
-            // Generate bibliography
-            let bibliography = `DAFTAR PUSTAKA\n`;
-            bibliography += `Format: ${selectedFormat.toUpperCase()}\n`;
-            bibliography += `Jumlah Referensi: ${references.length}\n`;
-            bibliography += `Dibuat: ${new Date().toLocaleDateString('id-ID', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            })}\n`;
-            bibliography += '='.repeat(60) + '\n\n';
+            // Generate bibliography based on selected format
+            let bibliography = '';
             
-            // Generate entries based on selected format
-            references.forEach((ref, index) => {
-                let entry = `${index + 1}. `;
-                
-                switch(selectedFormat) {
-                    case 'apa':
-                        entry += formatAPA(ref);
-                        break;
-                    case 'mla':
-                        entry += formatMLA(ref);
-                        break;
-                    case 'chicago':
-                        entry += formatChicago(ref);
-                        break;
-                    case 'harvard':
-                        entry += formatHarvard(ref);
-                        break;
-                    case 'ieee':
-                        entry += formatIEEE(ref, index + 1);
-                        break;
-                    case 'vancouver':
-                        entry += formatVancouver(ref, index + 1);
-                        break;
-                    case 'ama':
-                        entry += formatAMA(ref, index + 1);
-                        break;
-                    case 'pui':
-                        entry += formatPUI(ref);
-                        break;
-                    default:
-                        entry += formatAPA(ref);
-                }
-                
-                bibliography += entry + '\n\n';
-            });
+            switch(selectedFormat) {
+                case 'nature':
+                    bibliography = generateNatureFormat();
+                    break;
+                case 'science':
+                    bibliography = generateScienceFormat();
+                    break;
+                case 'cell':
+                    bibliography = generateCellFormat();
+                    break;
+                case 'ieee':
+                    bibliography = generateIEEEFormat();
+                    break;
+                case 'acs':
+                    bibliography = generateACSFormat();
+                    break;
+                case 'aps':
+                    bibliography = generateAPSFormat();
+                    break;
+                case 'nejm':
+                    bibliography = generateNEJMFormat();
+                    break;
+                case 'lancet':
+                    bibliography = generateLancetFormat();
+                    break;
+                case 'jama':
+                    bibliography = generateJAMAFormat();
+                    break;
+                case 'bmj':
+                    bibliography = generateBMJFormat();
+                    break;
+                case 'apa':
+                    bibliography = generateAPAFormat();
+                    break;
+                case 'mla':
+                    bibliography = generateMLAFormat();
+                    break;
+                case 'chicago':
+                    bibliography = generateChicagoFormat();
+                    break;
+                case 'harvard':
+                    bibliography = generateHarvardFormat();
+                    break;
+                default:
+                    bibliography = generateNatureFormat();
+            }
             
             // Update output
             document.getElementById('output').textContent = bibliography;
-            showToast('✅ Daftar pustaka berhasil dibuat', 'success');
+            showToast(`✅ ${selectedFormat.toUpperCase()} bibliography generated`);
         }
         
-        // ===== FORMATTING FUNCTIONS =====
-        function formatAPA(ref) {
-            let entry = `${ref.author} (${ref.year}). `;
+        // ===== INTERNATIONAL JOURNAL FORMATS =====
+        
+        // NATURE Format
+        function generateNatureFormat() {
+            let bib = 'REFERENCES\n\n';
             
-            if (ref.type === 'book') {
-                entry += `<i>${ref.title}</i>`;
-                if (ref.edition) entry += ` (${ref.edition})`;
-                entry += `. ${ref.publisher}.`;
-                if (ref.totalPages) entry += ` (${ref.totalPages} hlm.)`;
-            } else if (ref.type === 'journal') {
-                entry += `${ref.title}. <i>${ref.journalTitle}</i>`;
-                if (ref.volume) entry += `, <i>${ref.volume}</i>`;
-                if (ref.issue) entry += `(${ref.issue})`;
-                if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}.`;
-                if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
-            } else if (ref.type === 'website') {
-                entry += `${ref.title}.`;
-                if (ref.url) entry += ` Diperoleh dari ${ref.url}`;
-                if (ref.accessDate) entry += ` pada ${new Date(ref.accessDate).toLocaleDateString('id-ID')}`;
-            } else {
-                entry += `${ref.title}. ${ref.publisher}.`;
+            references.forEach((ref, index) => {
+                let entry = '';
+                
+                if (ref.type === 'journal') {
+                    // Nature journal article format
+                    entry = `${ref.author}. ${ref.title}. ${ref.journalTitle} ${ref.volume}`;
+                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}`;
+                    entry += ` (${ref.year}).`;
+                    if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
+                    
+                } else if (ref.type === 'book') {
+                    // Book format for Nature
+                    entry = `${ref.author}. ${ref.title} (${ref.publisher}, ${ref.city}, ${ref.year}).`;
+                    
+                } else {
+                    entry = `${ref.author}. ${ref.title}. ${ref.publisher} (${ref.year}).`;
+                }
+                
+                bib += `${index + 1}. ${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // SCIENCE Format
+        function generateScienceFormat() {
+            let bib = 'REFERENCES AND NOTES\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = '';
+                
+                if (ref.type === 'journal') {
+                    // Science journal article format
+                    const authors = formatAuthorsScience(ref.author);
+                    entry = `${authors}, "${ref.title}," ${ref.journalTitle} ${ref.volume}`;
+                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage} (${ref.year}).`;
+                    if (ref.doi) entry += ` DOI: ${ref.doi}`;
+                    
+                } else {
+                    entry = `${ref.author}, "${ref.title}" (${ref.publisher}, ${ref.year}).`;
+                }
+                
+                bib += `${index + 1}. ${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // CELL Press Format
+        function generateCellFormat() {
+            let bib = 'REFERENCES\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = '';
+                
+                if (ref.type === 'journal') {
+                    // Cell journal article format
+                    entry = `${ref.author} (${ref.year}). ${ref.title}. ${ref.journalTitle} ${ref.volume}`;
+                    if (ref.issue) entry += `(${ref.issue})`;
+                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}.`;
+                    if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
+                    
+                } else {
+                    entry = `${ref.author} (${ref.year}). ${ref.title}. ${ref.publisher}, ${ref.city}.`;
+                }
+                
+                bib += `${index + 1}. ${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // IEEE Format
+        function generateIEEEFormat() {
+            let bib = 'REFERENCES\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = `[${index + 1}] `;
+                
+                // Format author names for IEEE
+                const authors = formatAuthorsIEEE(ref.author);
+                entry += `${authors}, "${ref.title}"`;
+                
+                if (ref.type === 'journal') {
+                    entry += `, ${ref.journalTitle}, vol. ${ref.volume}, no. ${ref.issue}`;
+                    if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}`;
+                    entry += `, ${ref.year}.`;
+                    if (ref.doi) entry += ` DOI: ${ref.doi}`;
+                    
+                } else if (ref.type === 'conference') {
+                    entry += `, in Proc. ${ref.journalTitle}, ${ref.city}, ${ref.year}`;
+                    if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
+                    
+                } else {
+                    entry += `, ${ref.publisher}, ${ref.year}.`;
+                }
+                
+                bib += `${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // ACS Format
+        function generateACSFormat() {
+            let bib = 'REFERENCES\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = '';
+                
+                // Format authors for ACS
+                const authors = formatAuthorsACS(ref.author);
+                
+                if (ref.type === 'journal') {
+                    // ACS journal article format
+                    entry = `${authors} ${ref.title}. ${ref.journalTitle} ${ref.year}, ${ref.volume}`;
+                    if (ref.issue) entry += ` (${ref.issue})`;
+                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}.`;
+                    if (ref.doi) entry += ` DOI: ${ref.doi}`;
+                    
+                } else if (ref.type === 'book') {
+                    // Book format for ACS
+                    entry = `${authors} ${ref.title}; ${ref.publisher}: ${ref.city}, ${ref.year};`;
+                    if (ref.totalPages) entry += ` ${ref.totalPages} pp.`;
+                    
+                } else {
+                    entry = `${authors} ${ref.title}. ${ref.publisher} ${ref.year}.`;
+                }
+                
+                bib += `${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // APS Format
+        function generateAPSFormat() {
+            let bib = 'REFERENCES\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = '';
+                
+                if (ref.type === 'journal') {
+                    // Physical Review format
+                    const authors = formatAuthorsAPS(ref.author);
+                    entry = `${authors}, ${ref.title}, ${ref.journalTitle} ${ref.volume}`;
+                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage} (${ref.year}).`;
+                    if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
+                    
+                } else {
+                    entry = `${ref.author}, ${ref.title} (${ref.publisher}, ${ref.year}).`;
+                }
+                
+                bib += `${index + 1}. ${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // NEJM Format
+        function generateNEJMFormat() {
+            let bib = 'REFERENCES\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = `${index + 1}. `;
+                
+                if (ref.type === 'journal') {
+                    // NEJM medical article format
+                    entry = `${ref.author}. ${ref.title}. N Engl J Med ${ref.year};${ref.volume}`;
+                    if (ref.startPage && ref.endPage) entry += `:${ref.startPage}-${ref.endPage}.`;
+                    if (ref.doi) entry += ` doi:${ref.doi}`;
+                    
+                } else if (ref.type === 'book') {
+                    entry = `${ref.author}. ${ref.title}. ${ref.city}: ${ref.publisher}; ${ref.year}.`;
+                    
+                } else {
+                    entry = `${ref.author}. ${ref.title}. ${ref.publisher} ${ref.year}.`;
+                }
+                
+                bib += `${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // Lancet Format
+        function generateLancetFormat() {
+            let bib = 'REFERENCES\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = `${index + 1}. `;
+                
+                if (ref.type === 'journal') {
+                    // Lancet medical article format
+                    entry = `${ref.author}. ${ref.title}. Lancet ${ref.year}; ${ref.volume}`;
+                    if (ref.issue) entry += ` (${ref.issue})`;
+                    if (ref.startPage && ref.endPage) entry += `: ${ref.startPage}-${ref.endPage}.`;
+                    
+                } else {
+                    entry = `${ref.author}. ${ref.title}. ${ref.publisher}: ${ref.city}; ${ref.year}.`;
+                }
+                
+                bib += `${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // JAMA Format
+        function generateJAMAFormat() {
+            let bib = 'REFERENCES\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = `${index + 1}. `;
+                
+                if (ref.type === 'journal') {
+                    // JAMA medical article format
+                    entry = `${ref.author}. ${ref.title}. JAMA. ${ref.year};${ref.volume}`;
+                    if (ref.issue) entry += `(${ref.issue})`;
+                    if (ref.startPage && ref.endPage) entry += `:${ref.startPage}-${ref.endPage}.`;
+                    if (ref.doi) entry += ` doi:${ref.doi}`;
+                    
+                } else {
+                    entry = `${ref.author}. ${ref.title}. ${ref.city}, ${ref.country}: ${ref.publisher}; ${ref.year}.`;
+                }
+                
+                bib += `${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // BMJ Format
+        function generateBMJFormat() {
+            let bib = 'REFERENCES\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = `${index + 1}. `;
+                
+                if (ref.type === 'journal') {
+                    // BMJ medical article format
+                    entry = `${ref.author}. ${ref.title}. BMJ ${ref.year};${ref.volume}`;
+                    if (ref.startPage && ref.endPage) entry += `:${ref.startPage}.`;
+                    if (ref.doi) entry += ` doi: ${ref.doi}`;
+                    
+                } else {
+                    entry = `${ref.author}. ${ref.title}. ${ref.publisher} ${ref.year}.`;
+                }
+                
+                bib += `${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // APA Format (for Social Sciences)
+        function generateAPAFormat() {
+            let bib = 'REFERENCES\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = '';
+                
+                if (ref.type === 'journal') {
+                    entry = `${ref.author} (${ref.year}). ${ref.title}. ${ref.journalTitle}, ${ref.volume}`;
+                    if (ref.issue) entry += `(${ref.issue})`;
+                    if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}.`;
+                    if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
+                    
+                } else if (ref.type === 'book') {
+                    entry = `${ref.author} (${ref.year}). ${ref.title}. ${ref.publisher}.`;
+                    
+                } else {
+                    entry = `${ref.author} (${ref.year}). ${ref.title}. Retrieved from ${ref.url}`;
+                }
+                
+                bib += `${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // MLA Format
+        function generateMLAFormat() {
+            let bib = 'Works Cited\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = '';
+                
+                if (ref.type === 'journal') {
+                    entry = `${ref.author}. "${ref.title}." ${ref.journalTitle}, vol. ${ref.volume}, no. ${ref.issue}, ${ref.year}`;
+                    if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
+                    if (ref.doi) entry += ` doi:${ref.doi}`;
+                    
+                } else {
+                    entry = `${ref.author}. ${ref.title}. ${ref.publisher}, ${ref.year}.`;
+                }
+                
+                bib += `${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // Chicago Format
+        function generateChicagoFormat() {
+            let bib = 'Bibliography\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = '';
+                
+                if (ref.type === 'journal') {
+                    entry = `${ref.author}. "${ref.title}." ${ref.journalTitle} ${ref.volume}`;
+                    if (ref.issue) entry += `, no. ${ref.issue}`;
+                    if (ref.startPage && ref.endPage) entry += ` (${ref.year}): ${ref.startPage}-${ref.endPage}.`;
+                    if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
+                    
+                } else {
+                    entry = `${ref.author}. ${ref.title}. ${ref.city}: ${ref.publisher}, ${ref.year}.`;
+                }
+                
+                bib += `${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // Harvard Format
+        function generateHarvardFormat() {
+            let bib = 'Reference List\n\n';
+            
+            references.forEach((ref, index) => {
+                let entry = '';
+                
+                if (ref.type === 'journal') {
+                    entry = `${ref.author} (${ref.year}) '${ref.title}', ${ref.journalTitle}, ${ref.volume}`;
+                    if (ref.issue) entry += `(${ref.issue})`;
+                    if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
+                    if (ref.doi) entry += ` DOI: ${ref.doi}`;
+                    
+                } else {
+                    entry = `${ref.author} (${ref.year}) ${ref.title}, ${ref.publisher}: ${ref.city}.`;
+                }
+                
+                bib += `${entry}\n\n`;
+            });
+            
+            return bib;
+        }
+        
+        // ===== AUTHOR FORMATTING HELPERS =====
+        function formatAuthorsScience(authorString) {
+            const authors = authorString.split(/[,&]/).map(a => a.trim()).filter(a => a);
+            if (authors.length > 10) {
+                return authors.slice(0, 5).join(', ') + ' et al.';
             }
-            
-            return entry;
+            return authors.join(', ');
         }
         
-        function formatMLA(ref) {
-            let entry = `${ref.author}. `;
-            
-            if (ref.type === 'book') {
-                entry += `<i>${ref.title}</i>`;
-                if (ref.edition) entry += `, ${ref.edition}`;
-                entry += `. ${ref.publisher}, ${ref.year}.`;
-            } else if (ref.type === 'journal') {
-                entry += `"${ref.title}." <i>${ref.journalTitle}</i>`;
-                if (ref.volume) entry += `, vol. ${ref.volume}`;
-                if (ref.issue) entry += `, no. ${ref.issue}`;
-                entry += `, ${ref.year}`;
-                if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
+        function formatAuthorsIEEE(authorString) {
+            const authors = authorString.split(/[,&]/).map(a => a.trim()).filter(a => a);
+            const formatted = authors.map(author => {
+                if (author.includes(',')) {
+                    const parts = author.split(',');
+                    const lastName = parts[0].trim();
+                    const initials = parts[1] ? parts[1].replace(/[^A-Z]/g, '').split('').join('. ') + '.' : '';
+                    return `${initials} ${lastName}`;
+                }
+                return author;
+            });
+            return formatted.join(', ');
+        }
+        
+        function formatAuthorsACS(authorString) {
+            const authors = authorString.split(/[,&]/).map(a => a.trim()).filter(a => a);
+            const formatted = authors.map(author => {
+                if (author.includes(',')) {
+                    const parts = author.split(',');
+                    const lastName = parts[0].trim();
+                    const initials = parts[1] ? parts[1].replace(/[^A-Z]/g, '').split('').join('.') + '.' : '';
+                    return `${lastName}, ${initials}`;
+                }
+                return author;
+            });
+            return formatted.join('; ');
+        }
+        
+        function formatAuthorsAPS(authorString) {
+            const authors = authorString.split(/[,&]/).map(a => a.trim()).filter(a => a);
+            if (authors.length === 1) {
+                return authors[0];
+            } else if (authors.length === 2) {
+                return authors.join(' and ');
             } else {
-                entry += `"${ref.title}." ${ref.publisher}, ${ref.year}.`;
+                return authors.slice(0, -1).join(', ') + ', and ' + authors[authors.length - 1];
             }
-            
-            return entry;
-        }
-        
-        function formatChicago(ref) {
-            let entry = `${ref.author}. ${ref.year}. `;
-            
-            if (ref.type === 'book') {
-                entry += `<i>${ref.title}</i>`;
-                if (ref.edition) entry += `. ${ref.edition}`;
-                entry += `. ${ref.city}: ${ref.publisher}.`;
-            } else if (ref.type === 'journal') {
-                entry += `"${ref.title}." <i>${ref.journalTitle}</i>`;
-                if (ref.volume) entry += ` ${ref.volume}`;
-                if (ref.issue) entry += `, no. ${ref.issue}`;
-                if (ref.startPage && ref.endPage) entry += ` (${ref.year}): ${ref.startPage}-${ref.endPage}.`;
-            } else {
-                entry += `"${ref.title}." ${ref.publisher}.`;
-            }
-            
-            return entry;
-        }
-        
-        function formatHarvard(ref) {
-            let entry = `${ref.author} (${ref.year}) `;
-            
-            if (ref.type === 'book') {
-                entry += `<i>${ref.title}</i>`;
-                if (ref.edition) entry += `, ${ref.edition}`;
-                entry += `. ${ref.city}: ${ref.publisher}.`;
-            } else if (ref.type === 'journal') {
-                entry += `'${ref.title}', <i>${ref.journalTitle}</i>`;
-                if (ref.volume) entry += `, ${ref.volume}`;
-                if (ref.issue) entry += `(${ref.issue})`;
-                if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
-            } else {
-                entry += `'${ref.title}', ${ref.publisher}.`;
-            }
-            
-            return entry;
-        }
-        
-        function formatIEEE(ref, num) {
-            let entry = `[${num}] `;
-            entry += `${ref.author}, "${ref.title}," `;
-            
-            if (ref.type === 'journal') {
-                entry += `<i>${ref.journalTitle}</i>`;
-                if (ref.volume) entry += `, vol. ${ref.volume}`;
-                if (ref.issue) entry += `, no. ${ref.issue}`;
-                if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}`;
-                entry += `, ${ref.year}.`;
-            } else {
-                entry += `${ref.publisher}, ${ref.year}.`;
-            }
-            
-            return entry;
-        }
-        
-        function formatVancouver(ref, num) {
-            let entry = `${num}. `;
-            entry += `${ref.author}. ${ref.title}. `;
-            
-            if (ref.type === 'journal') {
-                entry += `${ref.journalTitle}. ${ref.year};`;
-                if (ref.volume) entry += `${ref.volume}`;
-                if (ref.issue) entry += `(${ref.issue})`;
-                if (ref.startPage && ref.endPage) entry += `:${ref.startPage}-${ref.endPage}.`;
-            } else {
-                entry += `${ref.publisher}; ${ref.year}.`;
-            }
-            
-            return entry;
-        }
-        
-        function formatAMA(ref, num) {
-            return formatVancouver(ref, num);
-        }
-        
-        function formatPUI(ref) {
-            let entry = `${ref.author}. ${ref.year}. <i>${ref.title}</i>. `;
-            if (ref.city) entry += `${ref.city}: `;
-            entry += `${ref.publisher}.`;
-            if (ref.totalPages) entry += ` ${ref.totalPages} hlm.`;
-            return entry;
         }
         
         // ===== UTILITY FUNCTIONS =====
@@ -1160,16 +1366,16 @@
             const text = document.getElementById('output').textContent;
             
             if (!text || text.includes('Tambahkan referensi')) {
-                showToast('❌ Tidak ada teks untuk disalin', 'error');
+                showToast('❌ No text to copy', 'error');
                 return;
             }
             
             try {
                 await navigator.clipboard.writeText(text);
-                showToast('✅ Berhasil disalin ke clipboard', 'success');
+                showToast('✅ Copied to clipboard');
             } catch (err) {
                 console.error('Copy failed:', err);
-                showToast('❌ Gagal menyalin', 'error');
+                showToast('❌ Copy failed', 'error');
             }
         }
         
@@ -1177,7 +1383,7 @@
             const text = document.getElementById('output').textContent;
             
             if (!text || text.includes('Tambahkan referensi')) {
-                showToast('❌ Tidak ada data untuk didownload', 'error');
+                showToast('❌ No data to download', 'error');
                 return;
             }
             
@@ -1185,13 +1391,13 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `daftar-pustaka-${selectedFormat}-${new Date().toISOString().split('T')[0]}.txt`;
+            a.download = `references-${selectedFormat}-${new Date().toISOString().split('T')[0]}.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
             
-            showToast('✅ File berhasil didownload', 'success');
+            showToast('✅ File downloaded');
         }
         
         function showToast(message, type = 'info') {
@@ -1201,15 +1407,13 @@
             
             // Create new toast
             const toast = document.createElement('div');
-            toast.className = `toast toast-${type}`;
+            toast.className = 'toast';
             toast.textContent = message;
             toast.style.cssText = `
                 position: fixed;
                 bottom: 20px;
                 right: 20px;
-                background: ${type === 'success' ? '#28a745' : 
-                           type === 'error' ? '#dc3545' : 
-                           type === 'warning' ? '#ffc107' : '#17a2b8'};
+                background: ${type === 'error' ? '#dc3545' : '#28a745'};
                 color: white;
                 padding: 12px 20px;
                 border-radius: 8px;
@@ -1227,23 +1431,33 @@
             }, 3000);
         }
         
-        // Add CSS for animations
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
-        
         // ===== EXAMPLE DATA =====
         function addExampleReferences() {
             const examples = [
+                {
+                    type: 'journal',
+                    author: 'Zhang, H., Wang, Y., Chen, L. et al.',
+                    year: '2023',
+                    title: 'Advances in quantum computing and machine learning',
+                    journalTitle: 'Nature',
+                    volume: '615',
+                    issue: '7952',
+                    startPage: '234',
+                    endPage: '245',
+                    doi: '10.1038/s41586-023-05886-1'
+                },
+                {
+                    type: 'journal',
+                    author: 'Smith, J. A., Johnson, M. B., Williams, C. D.',
+                    year: '2022',
+                    title: 'Deep learning approaches for medical image analysis',
+                    journalTitle: 'Science',
+                    volume: '378',
+                    issue: '6621',
+                    startPage: '456',
+                    endPage: '467',
+                    doi: '10.1126/science.abn1234'
+                },
                 {
                     type: 'book',
                     author: 'Creswell, J. W.',
@@ -1252,28 +1466,8 @@
                     publisher: 'SAGE Publications',
                     city: 'Thousand Oaks',
                     country: 'USA',
-                    edition: 'Edisi ke-5',
+                    edition: '5th',
                     totalPages: '275'
-                },
-                {
-                    type: 'journal',
-                    author: 'Smith, J. A., & Johnson, M. B.',
-                    year: '2022',
-                    title: 'The Impact of Digital Learning on Student Performance',
-                    journalTitle: 'Journal of Educational Technology',
-                    volume: '45',
-                    issue: '3',
-                    startPage: '123',
-                    endPage: '145',
-                    doi: '10.1080/12345678.2022.1234567'
-                },
-                {
-                    type: 'website',
-                    author: 'World Health Organization',
-                    year: '2023',
-                    title: 'Global Health Statistics 2023',
-                    url: 'https://www.who.int/data/gho',
-                    accessDate: '2023-10-15'
                 }
             ];
             
@@ -1289,6 +1483,9 @@
             updateReferencesList();
             updateStats();
         }
+        
+        // Initialize toggle
+        toggleFields();
     </script>
 </body>
 </html>
