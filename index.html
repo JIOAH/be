@@ -186,23 +186,6 @@
             margin-bottom: 1.2em !important;
         }
         
-        /* Format nomor referensi */
-        .numbered-reference {
-            display: flex !important;
-            margin-bottom: 0.9em !important;
-        }
-        
-        .number {
-            min-width: 2.5em !important;
-            text-align: right !important;
-            padding-right: 0.5em !important;
-            font-weight: normal !important;
-        }
-        
-        .reference-content {
-            flex: 1 !important;
-        }
-        
         .format-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -363,7 +346,7 @@
             animation: slideIn 0.3s ease;
         }
         
-        /* Panel kontrol pemformatan */
+        /* Panel kontrol pemformatan sederhana */
         .formatting-controls {
             background: #f8f9fa;
             padding: 15px;
@@ -405,24 +388,24 @@
             width: 80px;
         }
         
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-        }
-        
-        .checkbox-group label {
-            margin-bottom: 0;
-            font-size: 0.85rem;
-        }
-        
         @keyframes slideIn {
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* Style untuk daftar pustaka tanpa nomor */
+        .bibliography-item {
+            margin-bottom: 0.9em !important;
+            line-height: 0.9 !important;
+        }
+        
+        .capitalize-author {
+            text-transform: uppercase !important;
+            font-weight: bold !important;
+        }
+        
+        .normal-title {
+            font-style: italic !important;
         }
     </style>
 </head>
@@ -430,7 +413,7 @@
     <div class="container">
         <header>
             <h1>📚 Generator Daftar Pustaka</h1>
-            <p class="subtitle">Fields Opsional - Tidak Perlu Diisi Semua</p>
+            <p class="subtitle">Format Sederhana - Tanpa Penomoran</p>
         </header>
         
         <div class="main-content">
@@ -451,111 +434,45 @@
                 
                 <div class="form-group">
                     <label for="refType">Jenis Referensi</label>
-                    <select id="refType" onchange="toggleFields()">
-                        <option value="journal">📄 Jurnal Artikel</option>
+                    <select id="refType">
                         <option value="book">📚 Buku</option>
-                        <option value="website">🌐 Situs Web</option>
-                        <option value="conference">👥 Konferensi</option>
-                        <option value="thesis">🎓 Tesis/Disertasi</option>
+                        <option value="journal">📄 Jurnal</option>
+                        <option value="website">🌐 Website</option>
+                        <option value="article">📰 Artikel</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
                     <label for="author">
-                        Penulis <span class="required-star">*</span>
-                        <span class="optional-badge">Wajib</span>
+                        Nama Penulis <span class="required-star">*</span>
                     </label>
-                    <input type="text" id="author" placeholder="Contoh: Smith, J. A.">
-                    <div class="field-info">Jika tidak tahu penulis, tulis: Anonim</div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="year">
-                            Tahun <span class="required-star">*</span>
-                            <span class="optional-badge">Wajib</span>
-                        </label>
-                        <input type="number" id="year" placeholder="2024" min="1900" max="2100">
-                    </div>
-                    <div class="form-group">
-                        <label for="edition" class="optional">Edisi <span class="optional-badge">Opsional</span></label>
-                        <input type="text" id="edition" placeholder="Edisi ke-">
-                    </div>
+                    <input type="text" id="author" placeholder="Contoh: A. D. PRAYOGA">
+                    <div class="field-info">Huruf kapital otomatis untuk penulis</div>
                 </div>
                 
                 <div class="form-group">
                     <label for="title">
-                        Judul <span class="required-star">*</span>
-                        <span class="optional-badge">Wajib</span>
+                        Judul Karya <span class="required-star">*</span>
                     </label>
                     <input type="text" id="title" placeholder="Judul referensi...">
-                </div>
-                
-                <div id="journalFields" style="display: block;">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="journalTitle" class="optional">Nama Jurnal <span class="optional-badge">Opsional</span></label>
-                            <input type="text" id="journalTitle" placeholder="Nama jurnal">
-                        </div>
-                        <div class="form-group">
-                            <label for="volume" class="optional">Volume <span class="optional-badge">Opsional</span></label>
-                            <input type="text" id="volume" placeholder="Vol.">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="issue" class="optional">Issue/Nomor <span class="optional-badge">Opsional</span></label>
-                            <input type="text" id="issue" placeholder="No.">
-                        </div>
-                        <div class="form-group">
-                            <label for="doi" class="optional">DOI <span class="optional-badge">Opsional</span></label>
-                            <input type="text" id="doi" placeholder="10.xxxx/xxxx">
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="bookFields" style="display: none;">
-                    <div class="form-group">
-                        <label for="publisher" class="optional">Penerbit <span class="optional-badge">Opsional</span></label>
-                        <input type="text" id="publisher">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="city" class="optional">Kota Terbit <span class="optional-badge">Opsional</span></label>
-                            <input type="text" id="city">
-                        </div>
-                        <div class="form-group">
-                            <label for="country" class="optional">Negara <span class="optional-badge">Opsional</span></label>
-                            <input type="text" id="country">
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="webFields" style="display: none;">
-                    <div class="form-group">
-                        <label for="url" class="optional">URL <span class="optional-badge">Opsional</span></label>
-                        <input type="url" id="url" placeholder="https://example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="accessDate" class="optional">Tanggal Akses <span class="optional-badge">Opsional</span></label>
-                        <input type="date" id="accessDate">
-                    </div>
+                    <div class="field-info">Huruf kecil untuk judul</div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="pageInfo" class="optional">Informasi Halaman <span class="optional-badge">Opsional</span></label>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="number" id="totalPages" placeholder="Jml halaman total">
-                        </div>
-                        <div class="form-group">
-                            <div style="display: flex; align-items: center; gap: 5px;">
-                                <input type="number" id="startPage" placeholder="Dari" style="width: 80px;">
-                                <span>-</span>
-                                <input type="number" id="endPage" placeholder="Sampai" style="width: 80px;">
-                            </div>
-                        </div>
-                    </div>
+                    <label for="year">
+                        Tahun Terbit <span class="required-star">*</span>
+                    </label>
+                    <input type="number" id="year" placeholder="2024" min="1900" max="2100">
+                </div>
+                
+                <div class="form-group">
+                    <label for="publisher" class="optional">Penerbit (Opsional)</label>
+                    <input type="text" id="publisher" placeholder="Nama penerbit">
+                </div>
+                
+                <div class="form-group">
+                    <label for="city" class="optional">Kota Terbit (Opsional)</label>
+                    <input type="text" id="city" placeholder="Kota penerbitan">
                 </div>
                 
                 <div class="action-buttons">
@@ -565,39 +482,30 @@
                     <button class="btn btn-secondary" onclick="clearForm()">
                         🔄 Reset Form
                     </button>
-                    <button class="btn" onclick="fillMinimal()">
-                        📝 Minimal Input
+                    <button class="btn" onclick="addExample()">
+                        📝 Contoh Data
                     </button>
                 </div>
                 
                 <div style="margin-top: 20px; padding: 15px; background: #e8f4fc; border-radius: 8px;">
-                    <strong>📌 Informasi:</strong>
+                    <strong>📌 Format Output:</strong>
                     <ul style="margin-top: 10px; padding-left: 20px; font-size: 0.9rem;">
-                        <li>Hanya <strong>3 field wajib</strong>: Penulis, Tahun, Judul</li>
-                        <li>Field lainnya <strong>opsional</strong> - bisa dikosongkan</li>
-                        <li>Output akan otomatis menyesuaikan data yang ada</li>
-                        <li>Tidak ada tag HTML dalam output</li>
+                        <li><strong>NAMA PENULIS. judul karya. (tahun)</strong></li>
+                        <li>Tidak ada penomoran</li>
+                        <li>Nama penulis huruf KAPITAL</li>
+                        <li>Judul karya huruf kecil</li>
+                        <li>Tahun dalam kurung</li>
                     </ul>
                 </div>
             </div>
             
             <!-- OUTPUT SECTION -->
             <div class="output-section">
-                <h2 style="color: #2c3e50; margin-bottom: 20px;">📋 Format Output</h2>
+                <h2 style="color: #2c3e50; margin-bottom: 20px;">📋 Daftar Pustaka</h2>
                 
-                <!-- Kontrol Pemformatan -->
+                <!-- Kontrol Pemformatan Sederhana -->
                 <div class="formatting-controls">
-                    <h3 style="font-size: 1rem; margin-bottom: 10px; color: #2c3e50;">🎨 Pemformatan Paragraf</h3>
                     <div class="formatting-row">
-                        <div class="formatting-group">
-                            <label class="formatting-label">Jenis Indentasi:</label>
-                            <select class="formatting-select" id="indentType" onchange="updateFormatting()">
-                                <option value="hanging">Indentasi Gantung</option>
-                                <option value="first-line">Indentasi Baris Pertama</option>
-                                <option value="none">Tanpa Indentasi</option>
-                            </select>
-                        </div>
-                        
                         <div class="formatting-group">
                             <label class="formatting-label">Spasi Baris:</label>
                             <input type="number" class="formatting-input" id="lineSpacing" 
@@ -605,102 +513,30 @@
                         </div>
                         
                         <div class="formatting-group">
-                            <label class="formatting-label">Spasi Antar Referensi:</label>
+                            <label class="formatting-label">Spasi Antar:</label>
                             <input type="number" class="formatting-input" id="refSpacing" 
-                                   min="0" max="3" step="0.1" value="1.2" onchange="updateFormatting()">
+                                   min="0" max="3" step="0.1" value="1.0" onchange="updateFormatting()">
                         </div>
                         
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="boldNumbers" onchange="updateFormatting()">
-                            <label for="boldNumbers">Angka tebal</label>
-                        </div>
-                        
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="italicTitles" onchange="updateFormatting()">
-                            <label for="italicTitles">Judul miring</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tabs">
-                    <button class="tab active" onclick="showTab('basic')">Basic</button>
-                    <button class="tab" onclick="showTab('academic')">Academic</button>
-                    <button class="tab" onclick="showTab('simple')">Simple</button>
-                </div>
-                
-                <!-- Basic Formats -->
-                <div id="basic" class="tab-content active">
-                    <div class="format-grid">
-                        <div class="format-card" onclick="selectFormat('apa')">
-                            <div class="format-name">APA</div>
-                            <div class="format-desc">Author (Year). Title.</div>
-                        </div>
-                        <div class="format-card" onclick="selectFormat('mla')">
-                            <div class="format-name">MLA</div>
-                            <div class="format-desc">Author. "Title."</div>
-                        </div>
-                        <div class="format-card" onclick="selectFormat('chicago')">
-                            <div class="format-name">Chicago</div>
-                            <div class="format-desc">Author. Year. "Title."</div>
-                        </div>
-                        <div class="format-card" onclick="selectFormat('harvard')">
-                            <div class="format-name">Harvard</div>
-                            <div class="format-desc">Author (Year) Title</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Academic Formats -->
-                <div id="academic" class="tab-content">
-                    <div class="format-grid">
-                        <div class="format-card" onclick="selectFormat('ieee')">
-                            <div class="format-name">IEEE</div>
-                            <div class="format-desc">[1] A. Author, "Title"</div>
-                        </div>
-                        <div class="format-card" onclick="selectFormat('vancouver')">
-                            <div class="format-name">Vancouver</div>
-                            <div class="format-desc">1. Author. Title.</div>
-                        </div>
-                        <div class="format-card" onclick="selectFormat('nature')">
-                            <div class="format-name">Nature</div>
-                            <div class="format-desc">Author. Title. Journal Year</div>
-                        </div>
-                        <div class="format-card" onclick="selectFormat('science')">
-                            <div class="format-name">Science</div>
-                            <div class="format-desc">Author, Title. Journal Year</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Simple Formats -->
-                <div id="simple" class="tab-content">
-                    <div class="format-grid">
-                        <div class="format-card" onclick="selectFormat('simple')">
-                            <div class="format-name">Simple</div>
-                            <div class="format-desc">Author. Title. Year.</div>
-                        </div>
-                        <div class="format-card" onclick="selectFormat('numbered')">
-                            <div class="format-name">Numbered</div>
-                            <div class="format-desc">1. Author. Title.</div>
-                        </div>
-                        <div class="format-card" onclick="selectFormat('compact')">
-                            <div class="format-name">Compact</div>
-                            <div class="format-desc">Author (Year) Title</div>
-                        </div>
-                        <div class="format-card" onclick="selectFormat('custom')">
-                            <div class="format-name">Custom</div>
-                            <div class="format-desc">Pilih elemen sendiri</div>
+                        <div class="formatting-group">
+                            <label class="formatting-label">Font Size:</label>
+                            <select class="formatting-select" id="fontSize" onchange="updateFormatting()">
+                                <option value="0.9">Kecil</option>
+                                <option value="1.0" selected>Normal</option>
+                                <option value="1.1">Sedang</option>
+                                <option value="1.2">Besar</option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Selected Format Info -->
                 <div style="margin-top: 20px; padding: 15px; background: #fff8e1; border-radius: 8px;">
-                    <strong>Format Terpilih:</strong>
+                    <strong>Format:</strong>
                     <div id="formatInfo" style="margin-top: 10px;">
-                        <span id="selectedFormat" style="font-weight: bold; color: #2c3e50;">APA Style</span>
+                        <span id="selectedFormat" style="font-weight: bold; color: #2c3e50;">DAFTAR PUSTAKA</span>
                         <div id="formatDescription" style="font-size: 0.9rem; color: #666; margin-top: 5px;">
-                            <span id="currentFormattingInfo">Indentasi gantung, spasi 0.9</span>
+                            NAMA PENULIS. judul karya. (tahun)
                         </div>
                     </div>
                 </div>
@@ -709,8 +545,7 @@
                 <div style="margin-top: 20px;">
                     <label>Hasil Daftar Pustaka:</label>
                     <div class="output-box" id="output">
-                        Tambahkan referensi dengan minimal 3 data wajib...
-                        Field opsional bisa dikosongkan.
+                        Tambahkan referensi untuk melihat daftar pustaka...
                     </div>
                 </div>
                 
@@ -739,12 +574,13 @@
                 </div>
                 
                 <div style="margin-top: 20px; padding: 15px; background: #d4edda; border-radius: 8px;">
-                    <strong>✅ Fleksibel:</strong>
+                    <strong>✅ Format Sederhana:</strong>
                     <ul style="margin-top: 10px; padding-left: 20px; font-size: 0.9rem;">
-                        <li>Input bisa <strong>minimal</strong> (hanya 3 field wajib)</li>
-                        <li>Field kosong akan <strong>dihiraukan</strong> dalam output</li>
-                        <li>Format otomatis <strong>menyesuaikan</strong> data yang ada</li>
-                        <li>Tidak ada error jika field opsional kosong</li>
+                        <li><strong>Tidak ada penomoran</strong> - hanya daftar</li>
+                        <li><strong>Nama penulis huruf KAPITAL</strong></li>
+                        <li><strong>Judul huruf kecil</strong> (kecuali kata penting)</li>
+                        <li><strong>Tahun dalam kurung</strong></li>
+                        <li>Urut <strong>alfabet berdasarkan nama penulis</strong></li>
                     </ul>
                 </div>
             </div>
@@ -754,15 +590,12 @@
     <script>
         // ===== STATE MANAGEMENT =====
         let references = JSON.parse(localStorage.getItem('bibliography_references')) || [];
-        let selectedFormat = 'apa';
         
         // ===== PENGATURAN PEMFORMATAN =====
         let formattingSettings = {
-            indentType: 'hanging',
             lineSpacing: 0.9,
-            refSpacing: 1.2,
-            boldNumbers: true,
-            italicTitles: true
+            refSpacing: 1.0,
+            fontSize: '1.0'
         };
         
         // ===== INITIALIZATION =====
@@ -772,11 +605,8 @@
             
             // Add example data if empty
             if (references.length === 0) {
-                addExampleReferences();
+                addExampleData();
             }
-            
-            // Initialize format
-            selectFormat('apa');
             
             // Load formatting settings from localStorage
             const savedSettings = localStorage.getItem('bibliography_formatting');
@@ -784,183 +614,46 @@
                 formattingSettings = JSON.parse(savedSettings);
                 applyFormattingSettings();
             }
+            
+            // Generate initial bibliography
+            generateBibliography();
         });
         
-        // ===== UI FUNCTIONS =====
-        function showTab(tabId) {
-            // Update tabs
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Activate selected tab
-            event.target.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        }
-        
-        function selectFormat(format) {
-            selectedFormat = format;
-            
-            // Update UI
-            document.querySelectorAll('.format-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            // Find and select the clicked card
-            const cards = document.querySelectorAll('.format-card');
-            for (let card of cards) {
-                if (card.querySelector('.format-name').textContent.toLowerCase().includes(format)) {
-                    card.classList.add('selected');
-                    break;
-                }
-            }
-            
-            // Update format info
-            const formatNames = {
-                'apa': 'APA Style',
-                'mla': 'MLA Style', 
-                'chicago': 'Chicago Style',
-                'harvard': 'Harvard Style',
-                'ieee': 'IEEE Style',
-                'vancouver': 'Vancouver Style',
-                'nature': 'Nature Style',
-                'science': 'Science Style',
-                'simple': 'Simple Format',
-                'numbered': 'Numbered List',
-                'compact': 'Compact Format',
-                'custom': 'Custom Format'
-            };
-            
-            document.getElementById('selectedFormat').textContent = formatNames[format] || format;
-        }
-        
-        function toggleFields() {
-            const type = document.getElementById('refType').value;
-            
-            // Hide all
-            document.getElementById('journalFields').style.display = 'none';
-            document.getElementById('bookFields').style.display = 'none';
-            document.getElementById('webFields').style.display = 'none';
-            
-            // Show relevant fields
-            if (type === 'journal' || type === 'conference') {
-                document.getElementById('journalFields').style.display = 'block';
-            }
-            if (type === 'book' || type === 'thesis') {
-                document.getElementById('bookFields').style.display = 'block';
-            }
-            if (type === 'website') {
-                document.getElementById('webFields').style.display = 'block';
-            }
-        }
-        
-        function fillMinimal() {
-            // Fill only required fields
-            document.getElementById('author').value = 'Smith, J. A.';
-            document.getElementById('year').value = '2023';
-            document.getElementById('title').value = 'Sample Article Title';
-            
-            showToast('✅ Minimal input diisi (hanya field wajib)');
-        }
-        
-        // ===== FUNGSI PEMFORMATAN =====
-        function updateFormatting() {
-            // Update settings from UI
-            formattingSettings.indentType = document.getElementById('indentType').value;
-            formattingSettings.lineSpacing = parseFloat(document.getElementById('lineSpacing').value);
-            formattingSettings.refSpacing = parseFloat(document.getElementById('refSpacing').value);
-            formattingSettings.boldNumbers = document.getElementById('boldNumbers').checked;
-            formattingSettings.italicTitles = document.getElementById('italicTitles').checked;
-            
-            // Save to localStorage
-            localStorage.setItem('bibliography_formatting', JSON.stringify(formattingSettings));
-            
-            // Update UI
-            updateFormattingInfo();
-            
-            // Re-generate bibliography if already generated
-            const output = document.getElementById('output').textContent;
-            if (!output.includes('Tambahkan referensi')) {
-                generateBibliography();
-            }
-        }
-        
-        function applyFormattingSettings() {
-            // Apply settings to UI controls
-            document.getElementById('indentType').value = formattingSettings.indentType;
-            document.getElementById('lineSpacing').value = formattingSettings.lineSpacing;
-            document.getElementById('refSpacing').value = formattingSettings.refSpacing;
-            document.getElementById('boldNumbers').checked = formattingSettings.boldNumbers;
-            document.getElementById('italicTitles').checked = formattingSettings.italicTitles;
-            
-            updateFormattingInfo();
-        }
-        
-        function updateFormattingInfo() {
-            const indentNames = {
-                'hanging': 'Indentasi Gantung',
-                'first-line': 'Indentasi Baris Pertama',
-                'none': 'Tanpa Indentasi'
-            };
-            
-            const info = `${indentNames[formattingSettings.indentType]}, spasi baris ${formattingSettings.lineSpacing}`;
-            document.getElementById('currentFormattingInfo').textContent = info;
-        }
-        
-        // ===== DATA MANAGEMENT =====
+        // ===== FUNGSI UTAMA =====
         function addReference() {
-            // Get form values (trim whitespace)
+            // Get form values
             const refType = document.getElementById('refType').value;
-            const author = document.getElementById('author').value.trim();
+            let author = document.getElementById('author').value.trim();
             const year = document.getElementById('year').value.trim();
-            const title = document.getElementById('title').value.trim();
-            const edition = document.getElementById('edition').value.trim();
-            const journalTitle = document.getElementById('journalTitle').value.trim();
-            const volume = document.getElementById('volume').value.trim();
-            const issue = document.getElementById('issue').value.trim();
-            const doi = document.getElementById('doi').value.trim();
+            let title = document.getElementById('title').value.trim();
             const publisher = document.getElementById('publisher').value.trim();
             const city = document.getElementById('city').value.trim();
-            const country = document.getElementById('country').value.trim();
-            const totalPages = document.getElementById('totalPages').value.trim();
-            const startPage = document.getElementById('startPage').value.trim();
-            const endPage = document.getElementById('endPage').value.trim();
-            const url = document.getElementById('url').value.trim();
-            const accessDate = document.getElementById('accessDate').value;
             
-            // Validation - ONLY 3 FIELDS ARE REQUIRED
+            // Validation
             if (!author || !year || !title) {
-                showToast('❌ Mohon isi Penulis, Tahun, dan Judul', 'error');
+                showToast('❌ Mohon isi Nama Penulis, Tahun, dan Judul', 'error');
                 return;
             }
             
-            // Create reference object with only filled fields
+            // Format author to uppercase
+            author = author.toUpperCase();
+            
+            // Format title - keep as is for now
+            // title = title.toLowerCase();
+            
+            // Create reference object
             const reference = {
                 id: Date.now(),
                 type: refType,
-                author: author || 'Anonim',
-                year: year || 'n.d.',
-                title: title || 'Tidak ada judul',
+                author: author,
+                year: year,
+                title: title,
                 createdAt: new Date().toISOString()
             };
             
             // Add optional fields only if they have value
-            if (edition) reference.edition = edition;
-            if (journalTitle) reference.journalTitle = journalTitle;
-            if (volume) reference.volume = volume;
-            if (issue) reference.issue = issue;
-            if (doi) reference.doi = doi;
             if (publisher) reference.publisher = publisher;
             if (city) reference.city = city;
-            if (country) reference.country = country;
-            if (totalPages) reference.totalPages = totalPages;
-            if (startPage) reference.startPage = startPage;
-            if (endPage) reference.endPage = endPage;
-            if (url) reference.url = url;
-            if (accessDate) reference.accessDate = accessDate;
             
             // Add to references
             references.push(reference);
@@ -973,27 +666,125 @@
             updateReferencesList();
             updateStats();
             
+            // Auto-generate bibliography
+            generateBibliography();
+            
             showToast('✅ Referensi berhasil ditambahkan');
         }
         
+        function generateBibliography() {
+            if (references.length === 0) {
+                document.getElementById('output').textContent = 'Tambahkan referensi untuk melihat daftar pustaka...';
+                return;
+            }
+            
+            // Sort references alphabetically by author
+            references.sort((a, b) => {
+                const authorA = a.author.toLowerCase();
+                const authorB = b.author.toLowerCase();
+                return authorA.localeCompare(authorB);
+            });
+            
+            // Generate bibliography
+            let bibliography = 'DAFTAR PUSTAKA\n\n';
+            
+            references.forEach(ref => {
+                let entry = '';
+                
+                // Format: AUTHOR. title. (year)
+                if (ref.author) entry += `${ref.author}. `;
+                if (ref.title) entry += `${formatTitle(ref.title)}. `;
+                if (ref.year) entry += `(${ref.year})`;
+                
+                // Add publisher info if available
+                if (ref.publisher) {
+                    entry += ` ${ref.publisher}.`;
+                    if (ref.city) entry += ` ${ref.city}.`;
+                }
+                
+                bibliography += `${entry}\n`;
+            });
+            
+            // Apply formatting
+            bibliography = applyFormatting(bibliography);
+            
+            // Update output
+            document.getElementById('output').innerHTML = bibliography;
+            
+            showToast('✅ Daftar pustaka berhasil dibuat');
+        }
+        
+        function formatTitle(title) {
+            // Convert to lowercase first
+            let formatted = title.toLowerCase();
+            
+            // Capitalize first letter of each word (optional)
+            // formatted = formatted.replace(/\b\w/g, char => char.toUpperCase());
+            
+            return formatted;
+        }
+        
+        function applyFormatting(text) {
+            // Split by lines
+            const lines = text.split('\n');
+            let formattedHTML = '';
+            
+            lines.forEach((line, index) => {
+                if (line.trim() === '') {
+                    // Empty line
+                    formattedHTML += '<br>';
+                } else if (line.includes('DAFTAR PUSTAKA')) {
+                    // Header
+                    formattedHTML += `<div style="font-weight: bold; font-size: 1.2em; text-align: center; margin-bottom: 1em;">${line}</div>`;
+                } else {
+                    // Regular bibliography entry
+                    // Apply hanging indent
+                    formattedHTML += `<div class="bibliography-item hanging-indent" style="line-height: ${formattingSettings.lineSpacing} !important; margin-bottom: ${formattingSettings.refSpacing}em !important; font-size: ${formattingSettings.fontSize}rem !important;">`;
+                    
+                    // Find author and apply uppercase styling
+                    const dotIndex = line.indexOf('.');
+                    if (dotIndex > -1) {
+                        const author = line.substring(0, dotIndex + 1);
+                        const rest = line.substring(dotIndex + 1);
+                        formattedHTML += `<span class="capitalize-author">${author}</span>${rest}`;
+                    } else {
+                        formattedHTML += line;
+                    }
+                    
+                    formattedHTML += '</div>';
+                }
+            });
+            
+            return formattedHTML;
+        }
+        
+        function updateFormatting() {
+            // Update settings from UI
+            formattingSettings.lineSpacing = parseFloat(document.getElementById('lineSpacing').value);
+            formattingSettings.refSpacing = parseFloat(document.getElementById('refSpacing').value);
+            formattingSettings.fontSize = document.getElementById('fontSize').value;
+            
+            // Save to localStorage
+            localStorage.setItem('bibliography_formatting', JSON.stringify(formattingSettings));
+            
+            // Re-generate bibliography
+            generateBibliography();
+        }
+        
+        function applyFormattingSettings() {
+            // Apply settings to UI controls
+            document.getElementById('lineSpacing').value = formattingSettings.lineSpacing;
+            document.getElementById('refSpacing').value = formattingSettings.refSpacing;
+            document.getElementById('fontSize').value = formattingSettings.fontSize;
+        }
+        
+        // ===== FUNGSI BANTU =====
         function clearForm() {
-            // Clear all fields
             document.getElementById('author').value = '';
             document.getElementById('year').value = '';
             document.getElementById('title').value = '';
-            document.getElementById('edition').value = '';
-            document.getElementById('journalTitle').value = '';
-            document.getElementById('volume').value = '';
-            document.getElementById('issue').value = '';
-            document.getElementById('doi').value = '';
             document.getElementById('publisher').value = '';
             document.getElementById('city').value = '';
-            document.getElementById('country').value = '';
-            document.getElementById('totalPages').value = '';
-            document.getElementById('startPage').value = '';
-            document.getElementById('endPage').value = '';
-            document.getElementById('url').value = '';
-            document.getElementById('accessDate').value = '';
         }
         
         function removeReference(id) {
@@ -1002,6 +793,7 @@
                 saveToLocalStorage();
                 updateReferencesList();
                 updateStats();
+                generateBibliography();
                 showToast('🗑️ Referensi dihapus');
             }
         }
@@ -1017,7 +809,7 @@
                 saveToLocalStorage();
                 updateReferencesList();
                 updateStats();
-                document.getElementById('output').textContent = 'Tambahkan referensi dengan minimal 3 data wajib...\nField opsional bisa dikosongkan.';
+                document.getElementById('output').textContent = 'Tambahkan referensi untuk melihat daftar pustaka...';
                 showToast('🧹 Semua referensi dihapus');
             }
         }
@@ -1026,10 +818,10 @@
             localStorage.setItem('bibliography_references', JSON.stringify(references));
         }
         
-        // ===== UI UPDATES =====
         function updateReferencesList() {
             const container = document.getElementById('referencesList');
             const count = references.length;
+            document.getElementById('refCount').textContent = count;
             document.getElementById('refCount2').textContent = count;
             
             if (count === 0) {
@@ -1042,19 +834,15 @@
             references.forEach((ref, index) => {
                 const typeIcon = ref.type === 'journal' ? '📄' : 
                                 ref.type === 'book' ? '📚' : 
-                                ref.type === 'website' ? '🌐' : '📝';
-                
-                // Calculate completeness
-                const filledFields = Object.keys(ref).length - 4; // minus id, type, createdAt
-                const completeness = Math.min(100, (filledFields / 10) * 100);
+                                ref.type === 'website' ? '🌐' : '📰';
                 
                 html += `
                     <div class="reference-item">
                         <div style="display: flex; justify-content: space-between; align-items: start;">
                             <div style="flex: 1;">
-                                <strong style="font-size: 0.9rem;">${typeIcon} ${index + 1}. ${ref.author} (${ref.year})</strong><br>
-                                <span style="font-size: 0.85rem; color: #666;">${ref.title.substring(0, 50)}${ref.title.length > 50 ? '...' : ''}</span><br>
-                                <small style="color: #28a745;">${Math.round(completeness)}% lengkap</small>
+                                <strong style="font-size: 0.9rem;">${typeIcon} ${ref.author}</strong><br>
+                                <span style="font-size: 0.85rem; color: #666;">${ref.title}</span><br>
+                                <small style="color: #28a745;">(${ref.year})</small>
                             </div>
                             <button onclick="removeReference(${ref.id})" 
                                     style="background: none; border: none; color: #dc3545; cursor: pointer; font-size: 1.2rem;">
@@ -1073,479 +861,13 @@
             const count = references.length;
             document.getElementById('refCount').textContent = count;
             
-            // Calculate complete references (has more than just required fields)
             let completeCount = 0;
             references.forEach(ref => {
-                const filledFields = Object.keys(ref).length;
-                if (filledFields > 6) { // More than id, type, author, year, title, createdAt
+                if (ref.author && ref.year && ref.title) {
                     completeCount++;
                 }
             });
             document.getElementById('completeCount').textContent = completeCount;
-        }
-        
-        // ===== BIBLIOGRAPHY GENERATION (DENGAN PEMFORMATAN) =====
-        function generateBibliography() {
-            if (references.length === 0) {
-                showToast('❌ Tambahkan referensi terlebih dahulu', 'error');
-                return;
-            }
-            
-            // Sort references alphabetically
-            references.sort((a, b) => {
-                const authorA = a.author.toLowerCase().split(',')[0];
-                const authorB = b.author.toLowerCase().split(',')[0];
-                return authorA.localeCompare(authorB);
-            });
-            
-            // Generate bibliography based on selected format
-            let bibliography = '';
-            
-            switch(selectedFormat) {
-                case 'apa':
-                    bibliography = generateAPA();
-                    break;
-                case 'mla':
-                    bibliography = generateMLA();
-                    break;
-                case 'chicago':
-                    bibliography = generateChicago();
-                    break;
-                case 'harvard':
-                    bibliography = generateHarvard();
-                    break;
-                case 'ieee':
-                    bibliography = generateIEEE();
-                    break;
-                case 'vancouver':
-                    bibliography = generateVancouver();
-                    break;
-                case 'nature':
-                    bibliography = generateNature();
-                    break;
-                case 'science':
-                    bibliography = generateScience();
-                    break;
-                case 'simple':
-                    bibliography = generateSimple();
-                    break;
-                case 'numbered':
-                    bibliography = generateNumbered();
-                    break;
-                case 'compact':
-                    bibliography = generateCompact();
-                    break;
-                case 'custom':
-                    bibliography = generateCustom();
-                    break;
-                default:
-                    bibliography = generateAPA();
-            }
-            
-            // Apply formatting
-            bibliography = applyFormatting(bibliography);
-            
-            // Update output
-            document.getElementById('output').innerHTML = bibliography;
-            
-            // Update formatting info
-            updateFormattingInfo();
-            
-            showToast(`✅ ${selectedFormat.toUpperCase()} berhasil dibuat`);
-        }
-        
-        function applyFormatting(text) {
-            // Split by lines
-            const lines = text.split('\n');
-            let formattedHTML = '';
-            
-            // Apply line spacing
-            const lineSpacingStyle = `line-height: ${formattingSettings.lineSpacing} !important;`;
-            
-            // Apply spacing between references
-            const refSpacingStyle = `margin-bottom: ${formattingSettings.refSpacing}em !important;`;
-            
-            // Get indent class
-            const indentClass = `${formattingSettings.indentType}-indent`;
-            
-            lines.forEach((line, index) => {
-                if (line.trim() === '') {
-                    // Empty line - keep it as is
-                    formattedHTML += '<br>';
-                } else if (line.match(/^\d+\./)) {
-                    // Numbered reference
-                    const match = line.match(/^(\d+\.)(.+)/);
-                    if (match) {
-                        const number = match[1];
-                        const content = match[2];
-                        
-                        const boldStyle = formattingSettings.boldNumbers ? 'font-weight: bold !important;' : '';
-                        const numberHTML = `<span class="number" style="${boldStyle}">${number}</span>`;
-                        
-                        formattedHTML += `<div class="numbered-reference ${indentClass}" style="${lineSpacingStyle} ${refSpacingStyle}">`;
-                        formattedHTML += numberHTML;
-                        formattedHTML += `<span class="reference-content">${processContent(content)}</span>`;
-                        formattedHTML += '</div>';
-                    }
-                } else if (line.match(/^\[\d+\]/)) {
-                    // IEEE style [1]
-                    formattedHTML += `<div class="${indentClass}" style="${lineSpacingStyle} ${refSpacingStyle}">${processContent(line)}</div>`;
-                } else if (line.includes('REFERENCES') || line.includes('WORKS CITED') || line.includes('REFERENSI')) {
-                    // Header
-                    formattedHTML += `<div style="font-weight: bold; font-size: 1.1em; margin-bottom: 1em;">${line}</div>`;
-                } else {
-                    // Regular text
-                    formattedHTML += `<div class="${indentClass}" style="${lineSpacingStyle} ${refSpacingStyle}">${processContent(line)}</div>`;
-                }
-            });
-            
-            return formattedHTML;
-        }
-        
-        function processContent(text) {
-            // Apply italic to titles if enabled
-            if (formattingSettings.italicTitles) {
-                // Look for titles in quotes or patterns
-                text = text.replace(/"([^"]+)"/g, '"<em>$1</em>"');
-                text = text.replace(/‘([^']+)’/g, '‘<em>$1</em>’');
-                
-                // For APA style: Title.
-                if (selectedFormat === 'apa' || selectedFormat === 'chicago') {
-                    text = text.replace(/([A-Z][^.]+\.)(?= )/g, '<em>$1</em>');
-                }
-            }
-            
-            return text;
-        }
-        
-        // ===== FLEXIBLE FORMAT GENERATORS =====
-        
-        // APA Style - Flexible
-        function generateAPA() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                // Basic structure with available data
-                if (ref.author && ref.year && ref.title) {
-                    entry = `${ref.author} (${ref.year}). ${ref.title}.`;
-                    
-                    // Add journal info if available
-                    if (ref.journalTitle) {
-                        entry += ` ${ref.journalTitle}`;
-                        if (ref.volume) entry += `, ${ref.volume}`;
-                        if (ref.issue) entry += `(${ref.issue})`;
-                        if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}.`;
-                        if (ref.doi) entry += ` https://doi.org/${ref.doi}`;
-                    } 
-                    // Add book info if available
-                    else if (ref.publisher) {
-                        if (ref.edition) entry += ` (${ref.edition}).`;
-                        entry += ` ${ref.publisher}.`;
-                        if (ref.totalPages) entry += ` (${ref.totalPages} hlm.)`;
-                    }
-                    // Add website info if available
-                    else if (ref.url) {
-                        entry += ` Retrieved from ${ref.url}`;
-                        if (ref.accessDate) entry += ` on ${formatDate(ref.accessDate)}`;
-                    }
-                    // Minimal entry
-                    else {
-                        entry += ` (No publisher information).`;
-                    }
-                } else {
-                    entry = `[Data tidak lengkap]`;
-                }
-                
-                bib += `${index + 1}. ${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // MLA Style - Flexible
-        function generateMLA() {
-            let bib = 'WORKS CITED\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.author && ref.title) {
-                    entry = `${ref.author}. "${ref.title}."`;
-                    
-                    // Add journal info
-                    if (ref.journalTitle) {
-                        entry += ` ${ref.journalTitle}`;
-                        if (ref.volume) entry += `, vol. ${ref.volume}`;
-                        if (ref.issue) entry += `, no. ${ref.issue}`;
-                        if (ref.year) entry += `, ${ref.year}`;
-                        if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
-                        if (ref.doi) entry += ` doi:${ref.doi}`;
-                    }
-                    // Add book info
-                    else if (ref.publisher) {
-                        if (ref.edition) entry += ` ${ref.edition},`;
-                        if (ref.year) entry += ` ${ref.publisher}, ${ref.year}.`;
-                        else entry += ` ${ref.publisher}.`;
-                    }
-                    // Add website info
-                    else if (ref.url) {
-                        entry += ` ${ref.url}`;
-                        if (ref.accessDate) entry += `. Accessed ${formatDate(ref.accessDate)}.`;
-                    }
-                    // Minimal
-                    else if (ref.year) {
-                        entry += ` ${ref.year}.`;
-                    } else {
-                        entry += ` [No date].`;
-                    }
-                }
-                
-                bib += `${index + 1}. ${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // Simple Format - Just the basics
-        function generateSimple() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                // Just author, title, year
-                if (ref.author) entry += `${ref.author}. `;
-                if (ref.title) entry += `${ref.title}. `;
-                if (ref.year) entry += `(${ref.year}).`;
-                
-                // Add optional publisher if exists
-                if (ref.publisher) entry += ` ${ref.publisher}.`;
-                else if (ref.journalTitle) entry += ` ${ref.journalTitle}.`;
-                
-                bib += `${index + 1}. ${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // Numbered List - Simple numbered
-        function generateNumbered() {
-            let bib = '';
-            
-            references.forEach((ref, index) => {
-                let entry = `${index + 1}. `;
-                
-                if (ref.author) entry += `${ref.author}. `;
-                if (ref.title) entry += `${ref.title}. `;
-                if (ref.year) entry += `(${ref.year})`;
-                
-                // Add optional info
-                if (ref.publisher) entry += ` ${ref.publisher}.`;
-                if (ref.doi) entry += ` DOI: ${ref.doi}`;
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // Compact Format - Minimal space
-        function generateCompact() {
-            let bib = '';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.author) entry += `${ref.author} `;
-                if (ref.year) entry += `(${ref.year}) `;
-                if (ref.title) entry += `${ref.title}`;
-                
-                // Short optional info
-                if (ref.journalTitle) entry += `. ${ref.journalTitle}`;
-                else if (ref.publisher) entry += `. ${ref.publisher}`;
-                
-                if (ref.doi) entry += ` [${ref.doi}]`;
-                
-                bib += `${index + 1}. ${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // Custom Format - User selects elements
-        function generateCustom() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = `${index + 1}. `;
-                
-                // Always include author if available
-                if (ref.author) entry += `${ref.author}. `;
-                
-                // Include title
-                if (ref.title) entry += `${ref.title}. `;
-                
-                // Include year if available
-                if (ref.year) entry += `(${ref.year}) `;
-                
-                // Include journal/book info if available
-                if (ref.journalTitle) {
-                    entry += `In: ${ref.journalTitle}`;
-                    if (ref.volume) entry += `, Vol. ${ref.volume}`;
-                    if (ref.issue) entry += `(${ref.issue})`;
-                    if (ref.startPage && ref.endPage) entry += `: ${ref.startPage}-${ref.endPage}`;
-                    entry += `.`;
-                } else if (ref.publisher) {
-                    entry += `${ref.publisher}.`;
-                    if (ref.city) entry += ` ${ref.city}.`;
-                }
-                
-                // Include DOI if available
-                if (ref.doi) entry += ` DOI: ${ref.doi}`;
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        // Other formats (simplified versions)
-        function generateChicago() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.author && ref.year && ref.title) {
-                    entry = `${ref.author}. ${ref.year}. "${ref.title}."`;
-                    
-                    if (ref.journalTitle) {
-                        entry += ` ${ref.journalTitle}`;
-                        if (ref.volume) entry += ` ${ref.volume}`;
-                        if (ref.issue) entry += `, no. ${ref.issue}`;
-                        if (ref.startPage && ref.endPage) entry += `: ${ref.startPage}-${ref.endPage}.`;
-                    } else if (ref.publisher) {
-                        entry += ` ${ref.publisher}.`;
-                    }
-                }
-                
-                bib += `${index + 1}. ${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        function generateHarvard() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.author && ref.year && ref.title) {
-                    entry = `${ref.author} (${ref.year}) ${ref.title}.`;
-                    
-                    if (ref.journalTitle) {
-                        entry += ` ${ref.journalTitle}`;
-                        if (ref.volume) entry += `, ${ref.volume}`;
-                        if (ref.issue) entry += `(${ref.issue})`;
-                        if (ref.startPage && ref.endPage) entry += `, pp. ${ref.startPage}-${ref.endPage}.`;
-                    } else if (ref.publisher) {
-                        entry += ` ${ref.publisher}.`;
-                    }
-                }
-                
-                bib += `${index + 1}. ${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        function generateIEEE() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = `[${index + 1}] `;
-                
-                if (ref.author) {
-                    // Simple author formatting
-                    const authors = ref.author.split(',')[0];
-                    entry += `${authors}, `;
-                }
-                
-                if (ref.title) entry += `"${ref.title}", `;
-                
-                if (ref.journalTitle) entry += `${ref.journalTitle}, `;
-                else if (ref.publisher) entry += `${ref.publisher}, `;
-                
-                if (ref.year) entry += `${ref.year}.`;
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        function generateVancouver() {
-            let bib = '';
-            
-            references.forEach((ref, index) => {
-                let entry = `${index + 1}. `;
-                
-                if (ref.author) entry += `${ref.author}. `;
-                if (ref.title) entry += `${ref.title}. `;
-                
-                if (ref.journalTitle) {
-                    entry += `${ref.journalTitle}. `;
-                    if (ref.year) entry += `${ref.year};`;
-                    if (ref.volume) entry += `${ref.volume}`;
-                    if (ref.issue) entry += `(${ref.issue})`;
-                    if (ref.startPage && ref.endPage) entry += `:${ref.startPage}-${ref.endPage}.`;
-                } else if (ref.publisher) {
-                    entry += `${ref.publisher}; `;
-                    if (ref.year) entry += `${ref.year}.`;
-                }
-                
-                bib += `${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        function generateNature() {
-            let bib = 'REFERENCES\n\n';
-            
-            references.forEach((ref, index) => {
-                let entry = '';
-                
-                if (ref.author) entry += `${ref.author}. `;
-                if (ref.title) entry += `${ref.title}. `;
-                if (ref.journalTitle) entry += `${ref.journalTitle} `;
-                if (ref.year) entry += `${ref.year}`;
-                if (ref.volume) entry += `, ${ref.volume}`;
-                if (ref.startPage && ref.endPage) entry += `, ${ref.startPage}-${ref.endPage}`;
-                if (ref.doi) entry += ` (${ref.doi}).`;
-                
-                bib += `${index + 1}. ${entry}\n\n`;
-            });
-            
-            return bib;
-        }
-        
-        function generateScience() {
-            return generateNature();
-        }
-        
-        // ===== HELPER FUNCTIONS =====
-        function formatDate(dateString) {
-            if (!dateString) return '';
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-GB', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-            });
         }
         
         async function copyToClipboard() {
@@ -1587,7 +909,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `references-${selectedFormat}-${new Date().toISOString().split('T')[0]}.txt`;
+            a.download = `daftar-pustaka-${new Date().toISOString().split('T')[0]}.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -1596,12 +918,54 @@
             showToast('✅ File berhasil didownload');
         }
         
+        function addExample() {
+            const examples = [
+                {
+                    type: 'book',
+                    author: 'A. D. PRAYOGA',
+                    year: '2023',
+                    title: 'manusia ikan adalah mitos'
+                },
+                {
+                    type: 'book',
+                    author: 'A. D. PRAYOGA',
+                    year: '2020',
+                    title: 'bumi langit'
+                },
+                {
+                    type: 'article',
+                    author: 'ANGGA DWI PRAYOGA',
+                    year: '2024',
+                    title: 'manusia ikan beraklak'
+                }
+            ];
+            
+            examples.forEach(example => {
+                references.push({
+                    id: Date.now() + Math.random(),
+                    ...example,
+                    createdAt: new Date().toISOString()
+                });
+            });
+            
+            saveToLocalStorage();
+            updateReferencesList();
+            updateStats();
+            generateBibliography();
+            showToast('✅ Contoh data ditambahkan');
+        }
+        
+        function addExampleData() {
+            // Initial example data
+            if (references.length === 0) {
+                addExample();
+            }
+        }
+        
         function showToast(message, type = 'info') {
-            // Remove existing toast
             const existingToast = document.querySelector('.toast');
             if (existingToast) existingToast.remove();
             
-            // Create new toast
             const toast = document.createElement('div');
             toast.className = 'toast';
             toast.textContent = message;
@@ -1620,62 +984,11 @@
             
             document.body.appendChild(toast);
             
-            // Remove after 3 seconds
             setTimeout(() => {
                 toast.style.animation = 'slideOut 0.3s ease';
                 setTimeout(() => toast.remove(), 300);
             }, 3000);
         }
-        
-        // ===== EXAMPLE DATA =====
-        function addExampleReferences() {
-            const examples = [
-                {
-                    type: 'journal',
-                    author: 'Smith, J. A.',
-                    year: '2023',
-                    title: 'Sample Research Article',
-                    journalTitle: 'Journal of Examples',
-                    volume: '15',
-                    issue: '2',
-                    startPage: '123',
-                    endPage: '135',
-                    doi: '10.1234/example.2023'
-                },
-                {
-                    type: 'book',
-                    author: 'Johnson, M. B.',
-                    year: '2022',
-                    title: 'Introduction to Research Methods',
-                    publisher: 'Academic Press',
-                    city: 'New York',
-                    totalPages: '300'
-                },
-                {
-                    type: 'website',
-                    author: 'World Health Organization',
-                    year: '2023',
-                    title: 'Global Health Report',
-                    url: 'https://www.who.int/reports'
-                }
-            ];
-            
-            examples.forEach(example => {
-                references.push({
-                    id: Date.now() + Math.random(),
-                    ...example,
-                    createdAt: new Date().toISOString()
-                });
-            });
-            
-            saveToLocalStorage();
-            updateReferencesList();
-            updateStats();
-        }
-        
-        // Initialize toggle
-        toggleFields();
-        updateFormattingInfo();
     </script>
 </body>
 </html>
