@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>UMKM Menu Pricing Assistant</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+  font-family:Inter,Arial;
+  background:#020617;
+  color:#e5e7eb;
+  padding:20px;
+  max-width:900px;
+  margin:auto
+}
+h2,h3{color:#38bdf8}
+input,select{
+  width:100%;
+  padding:8px;
+  margin:6px 0;
+  background:#020617;
+  color:#fff;
+  border:1px solid #334155;
+  border-radius:10px
+}
+button{
+  padding:10px 14px;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  margin-top:8px
+}
+.add{background:#22c55e}
+.calc{background:#3b82f6;color:#fff}
+.del{background:#ef4444;color:#fff}
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:6px
+}
+th,td{
+  border:1px solid #334155;
+  padding:6px;
+  text-align:center
+}
+.box{
+  border:1px solid #334155;
+  border-radius:16px;
+  padding:12px;
+  margin-top:12px
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px;
+  margin-top:10px
+}
+.card{
+  background:#020617;
+  border:1px solid #334155;
+  border-radius:18px;
+  padding:12px;
+  text-align:center
+}
+.card.active{border:2px solid #38bdf8}
+.low{color:#a5f3fc}
+.medium{color:#22c55e}
+.high{color:#facc15}
+.premium{color:#f472b6}
+.green{color:#22c55e}
+.orange{color:#f59e0b}
+.red{color:#ef4444}
+.rangeBox{
+  margin-top:10px
+}
+</style>
+</head>
+<body>
+
+<h2>🍽️ UMKM Menu Pricing Assistant</h2>
+
+<label>Nama Menu</label>
+<input id="menu" placeholder="Contoh: Ayam Geprek">
+
+<h3>Bahan Produksi</h3>
+<table id="bahanTable">
+<tr><th>Bahan</th><th>Qty</th><th>Harga</th><th></th></tr>
+<tr>
+<td><input></td>
+<td><input type="number"></td>
+<td><input type="number"></td>
+<td><button class="del" onclick="this.parentElement.parentElement.remove()">X</button></td>
+</tr>
+</table>
+<button class="add" onclick="addBahan()">+ Tambah Bahan</button>
+
+<h3>Biaya Operasional</h3>
+<table id="opTable">
+<tr><th>Biaya</th><th>Nominal</th><th></th></tr>
+<tr>
+<td><input></td>
+<td><input type="number"></td>
+<td><button class="del" onclick="this.parentElement.parentElement.remove()">X</button></td>
+</tr>
+</table>
+<button class="add" onclick="addOp()">+ Tambah Operasional</button>
+
+<h3>Produksi</h3>
+<input id="qty" type="number" placeholder="Jumlah porsi diproduksi">
+<input id="margin" type="number" placeholder="Target margin (%)">
+
+<button class="calc" onclick="analisaAI()">Analisa Harga</button>
+
+<div class="box">
+<b>Ringkasan Biaya</b><br>
+Total Biaya: <b id="totalBiaya">-</b><br>
+HPP / Porsi: <b id="hpp">-</b><br>
+Harga Rekomendasi AI: <b id="hargaAI">-</b>
+</div>
+
+<h3>Segmentasi Harga Pasar</h3>
+<div class="cards">
+  <div class="card low"><h4>LOW</h4><p>Warung</p><b id="lowPrice">-</b></div>
+  <div class="card medium active"><h4>MEDIUM ⭐</h4><p>Kantin / Kos</p><b id="mediumPrice">-</b></div>
+  <div class="card high"><h4>HIGH</h4><p>Resto kecil</p><b id="highPrice">-</b></div>
+  <div class="card premium"><h4>PREMIUM</h4><p>Cafe / Brand</p><b id="premiumPrice">-</b></div>
+</div>
+
+<h3>Harga Jual Penjual</h3>
+<input id="hargaUser" type="number" placeholder="Contoh: 18000">
+<button class="calc" onclick="analisaHargaUser()">Evaluasi Harga</button>
+
+<h3>Simulasi Diskon</h3>
+<div class="rangeBox">
+<input type="range" id="diskon" min="0" max="30" value="0" oninput="simulasiDiskon()">
+<b id="diskonVal">0%</b>
+</div>
+
+<div class="box">
+Harga Awal: <b id="hargaAwal">-</b><br>
+Harga Setelah Diskon: <b id="hargaDiskon">-</b>
+</div>
+
+<div class="box">
+<b>Analisa Sistem</b>
+<div id="aiResult"></div>
+</div>
+
+<script>
+const rupiah=n=>"Rp"+Math.round(n).toLocaleString("id-ID")
+let dataAI={}
+
+function addBahan(){
+bahanTable.insertRow().innerHTML=
+`<td><input></td><td><input type="number"></td><td><input type="number"></td>
+<td><button class="del" onclick="this.parentElement.parentElement.remove()">X</button></td>`
+}
+function addOp(){
+opTable.insertRow().innerHTML=
+`<td><input></td><td><input type="number"></td>
+<td><button class="del" onclick="this.parentElement.parentElement.remove()">X</button></td>`
+}
+
+function analisaAI(){
+let tb=0,to=0
+document.querySelectorAll("#bahanTable tr").forEach((r,i)=>{
+ if(i==0)return
+ tb+=r.cells[1].children[0].value*r.cells[2].children[0].value
+})
+document.querySelectorAll("#opTable tr").forEach((r,i)=>{
+ if(i==0)return
+ to+=+r.cells[1].children[0].value
+})
+let q=+qty.value,m=+margin.value
+if(!menu.value||!q||!m)return alert("Lengkapi data")
+
+let total=tb+to
+let hppv=total/q
+let hargaAIv=hppv+(hppv*m/100)
+
+totalBiaya.innerText=rupiah(total)
+hpp.innerText=rupiah(hppv)
+hargaAI.innerText=rupiah(hargaAIv)
+
+lowPrice.innerText=rupiah(hppv*1.3)+" - "+rupiah(hppv*1.45)
+mediumPrice.innerText=rupiah(hppv*1.55)+" - "+rupiah(hppv*1.8)
+highPrice.innerText=rupiah(hppv*1.9)+" - "+rupiah(hppv*2.2)
+premiumPrice.innerText=rupiah(hppv*2.5)+" - "+rupiah(hppv*3)
+
+dataAI={total,q,hargaAI:hargaAIv}
+}
+
+function analisaHargaUser(){
+let h=+hargaUser.value
+if(!h)return alert("Masukkan harga jual")
+
+let omzet=h*dataAI.q
+let pph=omzet*0.005
+let laba=omzet-dataAI.total-pph
+
+let status="AMAN",warna="green"
+if(laba<0){status="RUGI";warna="red"}
+else if(laba<20000){status="KRITIS";warna="orange"}
+
+aiResult.innerHTML=
+`Menu: <b>${menu.value}</b><br>
+Status: <b class="${warna}">${status}</b><br>
+Laba Bersih: ${rupiah(laba)}`
+}
+
+function simulasiDiskon(){
+let d=+diskon.value
+diskonVal.innerText=d+"%"
+
+let harga=+hargaUser.value||dataAI.hargaAI
+let hargaBaru=harga-(harga*d/100)
+
+hargaAwal.innerText=rupiah(harga)
+hargaDiskon.innerText=rupiah(hargaBaru)
+
+let omzet=hargaBaru*dataAI.q
+let pph=omzet*0.005
+let laba=omzet-dataAI.total-pph
+
+let note=laba<0
+?`<span class="red">⚠️ RUGI setelah diskon</span>`
+:laba<20000
+?`<span class="orange">⚠️ KRITIS, diskon terlalu besar</span>`
+:`<span class="green">✅ Diskon masih aman</span>`
+
+aiResult.innerHTML+=`<br>${note}`
+}
+</script>
+
+</body>
+</html>
